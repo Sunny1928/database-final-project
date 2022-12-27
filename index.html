@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
+    rel="stylesheet"
+    />
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+    ></script>
+    <title>Database Final Project</title>
+</head>
+<body>
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white p-0">
+          <div class="position-sticky">
+            <div class="mt-4">
+                <div id="header-content" class="w-auto">
+                  <div class="d-flex justify-content-center">
+                  <img src="baby.jpg" alt="avatar" class="rounded-circle img-fluid mb-3 m-auto" style="max-width: 100px;">
+                  </div>
+                  <h4 class="text-center">
+                    <span style="white-space: nowrap;">Ann Smith</span>
+                  </h4>
+                  <p class="text-center">ann_s@mdbootstrap.com</p>
+                </div>
+                <hr class="mb-0">
+            </div>
+            <div class="list-group list-group-flush mx-3 mt-4">
+              <a class="list-group-item list-group-item-action py-2 ripple pb-2 active"
+                id="tab-dashboard"
+                data-mdb-toggle="pill"
+                href="#pills-dashboard"
+                role="tab"
+                aria-controls="pills-dashboard"
+                aria-selected="true">
+                <i class="fas fa-user-circle pe-3"></i>DashBoard
+              </a>
+              <a class="list-group-item list-group-item-action py-2 ripple pb-2"
+                id="tab-news"
+                data-mdb-toggle="pill"
+                href="#pills-news"
+                role="tab"
+                aria-controls="pills-news"
+                aria-selected="false">
+                <i class="fas fa-envelope pe-3"></i>News
+              </a>
+              <a class="list-group-item list-group-item-action py-2 ripple pb-2"
+                id="tab-message"
+                data-mdb-toggle="pill"
+                href="#pills-message"
+                role="tab"
+                aria-controls="pills-message"
+                aria-selected="false">
+                <i class="fas fa-paper-plane pe-3"></i>Message
+              </a>
+              <a href="#" class="list-group-item list-group-item-action py-2 ripple pb-2 pt-2">
+                <i class="fas fa-user-astronaut pe-3"></i>Log out
+              </a>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+      </header>
+      <!--Main Navigation-->
+
+      <!--Main layout-->
+      <main>
+        <div class="tab-content" style="height: 100vh;">
+            <div class="tab-pane fade " id="pills-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
+            </div>
+            <div class="tab-pane fade show active" id="pills-news" role="tabpanel" aria-labelledby="tab-news">
+              <div class="card m-2">
+                <div class="card-header">2022-12-25</div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                  </blockquote>
+                  <div class="d-flex">
+                    <button type="button" class="btn btn-tertiary me-2" data-mdb-ripple-color="light">編輯</button>
+                    <button type="button" class="btn btn-tertiary" data-mdb-ripple-color="light">刪除</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card m-2">
+                <div class="card-header">2022-12-27</div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <div class="d-flex">
+                      <button type="button" class="btn btn-tertiary me-2" data-mdb-ripple-color="light">編輯</button>
+                      <button type="button" class="btn btn-tertiary" data-mdb-ripple-color="light">刪除</button>
+                    </div>
+                  </blockquote>
+                </div>
+              </div>
+              <div class="card m-2">
+                <div class="card-body">
+                  <p>2022-12-27</p>
+
+                  <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <div class="d-flex">
+                      <button type="button" class="btn btn-tertiary me-2" data-mdb-ripple-color="light">編輯</button>
+                      <button type="button" class="btn btn-tertiary" data-mdb-ripple-color="light">刪除</button>
+                    </div>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade h-100" id="pills-message" role="tabpanel" aria-labelledby="tab-message">
+                <div class="m-2" style="background-color: #eee;">
+                          <div class="card vh-100" id="chat2">
+                            <div class="card-header d-flex justify-content-between align-items-center p-3">
+                              <h5 class="mb-0">Message</h5>
+                            </div>
+                            <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px; overflow: scroll;">
+                  
+                              <div class="d-flex flex-row justify-content-start">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                                <div>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">Hi</p>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">How are you ...???</p>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">What are you doing
+                                    tomorrow? Can we come up a bar?</p>
+                                  <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
+                                </div>
+                              </div>
+                  
+                              <div class="divider d-flex align-items-center mb-4">
+                                <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Today</p>
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-end mb-4 pt-1">
+                                <div>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">Hiii, I'm good.</p>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">How are you doing?</p>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">Long time no see! Tomorrow
+                                    office. will
+                                    be free on sunday.</p>
+                                  <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">00:06</p>
+                                </div>
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-start mb-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                                <div>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">Okay</p>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">We will go on
+                                    Sunday?</p>
+                                  <p class="small ms-3 mb-3 rounded-3 text-muted">00:07</p>
+                                </div>
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-end mb-4">
+                                <div>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">That's awesome!</p>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">I will meet you Sandon Square
+                                    sharp at
+                                    10 AM</p>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">Is that okay?</p>
+                                  <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">00:09</p>
+                                </div>
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-start mb-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                                <div>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">Okay i will meet
+                                    you on
+                                    Sandon Square</p>
+                                  <p class="small ms-3 mb-3 rounded-3 text-muted">00:11</p>
+                                </div>
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-end mb-4">
+                                <div>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">Do you have pictures of Matley
+                                    Marriage?</p>
+                                  <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">00:11</p>
+                                </div>
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-start mb-4">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                                <div>
+                                  <p class="small p-2 ms-3 mb-1 rounded-3" style="background-color: #f5f6f7;">Sorry I don't
+                                    have. i
+                                    changed my phone.</p>
+                                  <p class="small ms-3 mb-3 rounded-3 text-muted">00:13</p>
+                                </div>
+                              </div>
+                  
+                              <div class="d-flex flex-row justify-content-end">
+                                <div>
+                                  <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">Okay then see you on sunday!!
+                                  </p>
+                                  <p class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end">00:15</p>
+                                </div>
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
+                                  alt="avatar 1" style="width: 45px; height: 100%;">
+                              </div>
+                            </div>
+                            <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                              <img src="baby.jpg"
+                                alt="avatar 3" style="width: 40px; height: 100%; border-radius: 100%;">
+                              <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                                placeholder="Type message">
+                              <a class="ms-3" href="#!"><i class="fas fa-paper-plane"></i></a>
+                            </div>
+                          </div>
+                </div>
+            </div>
+          </div>
+      </main>
+</body>
+</html>
+<style>
+body {
+  background-color: #fbfbfb;
+}
+@media (min-width: 800px) {
+  main {
+    padding-left: 280px;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 280px;
+  z-index: 600;
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+#chat2 .form-control {
+border-color: transparent;
+}
+
+#chat2 .form-control:focus {
+border-color: transparent;
+box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+</style>
