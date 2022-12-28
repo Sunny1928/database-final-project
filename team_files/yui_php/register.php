@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> 86d78bed97f3b3473dab82fc57f24c526699da10
 <?php
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -17,7 +11,7 @@
 		if (!$conn) {
 		    die("Connection failed: " . mysqli_connect_error());
 		}
-<<<<<<< HEAD
+
 		echo "Connected successfully";
 		
 		//echo $_POST['academic_year'];
@@ -26,9 +20,7 @@
 		/* 
 		 * new account
 		 */
-=======
-	    echo "Connected successfully";
->>>>>>> 86d78bed97f3b3473dab82fc57f24c526699da10
+
 		
 		$_POST['password'] = password_hash($_POST["password"] ,PASSWORD_DEFAULT);
 
@@ -37,17 +29,11 @@
 		$type = 'student';
 		$stmt = $conn->prepare($sql);
 		$stmt->bind_param('sssiss' ,$_POST['name'] , $_POST['password'] , $_POST['email'] , $_POST['phone'] , $_POST['account'] , $type);
-<<<<<<< HEAD
-=======
-
->>>>>>> 86d78bed97f3b3473dab82fc57f24c526699da10
 		$stmt->execute();	
 		
 		/*
 		 * new student
 		 */
-
-<<<<<<< HEAD
 		$sql = "INSERT INTO Student (academic_year , student_id ,major_year , gender , account) VALUES(?, ?, ?, ?, ?)";
 		$stmt = $conn->prepare($sql);		
 		$stmt->bind_param('isiss' ,$_POST['academic_year'] , $_POST['student_id'] , $_POST['major_year'] , $_POST['gender'] , $_POST['account']);
@@ -55,9 +41,6 @@
 	
 		
 		header("Locaition: ../login_view.php" , 301);
-=======
-		header("Location: ../login_view.php" , 301);
->>>>>>> 86d78bed97f3b3473dab82fc57f24c526699da10
         die();
 	}
 ?>

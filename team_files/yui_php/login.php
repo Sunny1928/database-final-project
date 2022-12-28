@@ -27,6 +27,7 @@
 		
 
 		if (password_verify($password, $user_info["password"])) {
+			$_SESSION['account']=$account;
 			$_SESSION['permission'] = $user_info["type"];
 			$_SESSION['name'] = $user_info["name"];
 			header("Location: ./mainpage.php");	
