@@ -1,5 +1,5 @@
+<!-- 更新公告資料 -->
 <?php 
-
     require_once('./connect_db.php');
     $conn = connect_db();
     

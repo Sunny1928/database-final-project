@@ -1,3 +1,4 @@
+<!-- 新增公告介面 -->
 <center>
 
     <form method="post" action="./news_add.php">

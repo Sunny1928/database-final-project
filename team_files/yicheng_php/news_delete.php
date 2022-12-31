@@ -1,3 +1,4 @@
+<!-- 刪除公告功能 -->
 <?php
 
     session_start();

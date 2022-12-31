@@ -1,3 +1,4 @@
+<!-- 訊息主介面 -->
 <?php 
     session_start();
 
@@ -6,67 +7,132 @@
 
 ?>
 
-<form method = "post" action="./comment_add.php"> 
-        
-    <table border="1">
-        
-        <tr><font size="4" face="標楷體"color=black>
-        <td><font size="4" face="標楷體"color=black>內容</td>
-        <td><input type=text maxLength="12" size="12" name="content"required></td>
-        <td><input type="submit" value="傳送" ></td>
-        </tr>
+<style>
+    .dialog{
+        width:600px;
+        height:500px;
+        border:1px solid #666;
+        margin:50px auto 0;
+        background:#f9f9f9;
+        word-wrap:break-word;
+    }
+    .talk_show{
+        width:580px;
+        height:420px;
+        border:1px solid #666;
+        background:#fff;
+        margin:10px auto 0;
+        overflow-y:auto;
+    }
+    .talk_input{
+        width:580px;
+        margin:10px auto 0;
+    }
+
+    .talk_word{
+        width:420px;
+        height:26px;
+        padding:0px;
+        float:left;
+        margin-left:80px;
+        outline:none;
+        text-indent:10px;
+    }        
+    .talk_sub{
+        width:56px;
+        height:30px;
+        float:left;
+        margin-left:10px;
+    }
+    .left_dialog{
+        margin:10px; 
+        margin-left: 20px;
+        margin-right: 80px;
+
+    }
+    .left_dialog .content{
+        display: inline;
+        background:#0181cc;
+        border-radius:10px;
+        color:#fff;
+        padding:5px 10px;
+    }
+    .right_dialog{
+        margin:10px;
+        text-align:right;
+        margin-left: 80px;
+        margin-right: 20px;
+
+    }
+    .right_dialog .content{
+        display: inline;
+        background:#ef8201;
+        border-radius:10px;
+        color:#fff;
+        padding:5px 10px;
     
-    </table>
+    }
+    .option{
+        display:inline-block; 
+    }
+</style>
 
-</form>
 
-<center>
+<!-- 對話框 -->
+<div class="dialog">
+    <div class="talk_show">
 
-    <table border="1">
-
-    <tr><font size="4" face="標楷體"color=black>
-        
-    <td><font size="4" face="標楷體"color=black>時間</td>
-    <td><font size="4" face="標楷體"color=black >內容</td>
-    <td><font size="4" face="標楷體"color=black>帳號名稱</td>
-    <td><font size="4" face="標楷體"color=black></td>
-    
-    </tr>
-    <?php
-        $sql =  "SELECT * FROM comment";
-        $result = $conn->query($sql);
-        
-        while($row=mysqli_fetch_array($result)){
+        <!-- 抓取對話訊息 -->
+        <?php
+            $sql =  "SELECT * FROM comment";
+            $result = $conn->query($sql);
             
-            # 切時間成(時:分)
-            $date = mb_split(" ",$row[0])[1];
-            $time = mb_split(":",$date);
-            $content = $row[1];
-            $comment_id = $row[2];
-            $account = $row[3];
+            while($row=mysqli_fetch_array($result)){
+                
+                # 切時間成(時:分)
+                $date = mb_split(" ",$row[0])[1];
+                $time = mb_split(":",$date);
+                $content = $row[1];
+                $comment_id = $row[2];
+                $account = $row[3];
+                
+                # 判斷是不是本人和身分是否為學生 , 都符合的人不能編輯其他使用者的公告
+                if($account != $_SESSION["account"] && $_SESSION["permission"]=="student"){
             
-            echo'<tr>';
+                    echo "
+                        <div class='left_dialog'>
+                            <div class='content'>$content</div>
+                            <div >
+                                <div class='option'>$time[0]:$time[1]</div>
+                            </div>                            
+                        </div>
+                    ";
             
-            echo "<td><font size= '4' face='標楷體' color= black> $time[0]:$time[1]</td>";
-            echo "<td><font size= '4' face='標楷體' color= black> $content </td>";
-            echo "<td><font size= '4' face='標楷體' color= black> $account </td>";
-            
-            #學生只能修改自己的留言 ， 而其他身分可以更動全部人的
-            if (($_SESSION["permission"]=="student" && $_SESSION["account"]==$account) || $_SESSION["permission"]!="student" ){ 
-                echo "<td><font size= '4' face='標楷體' color= black><a href='./comment_delete.php?comment_id=$comment_id&account=$account'>刪除</a></td>";
+                } 
+                else {
+                    # 本人可以對自己傳的訊息操作
+                    echo "
+                        <div class='right_dialog'>
+                            <div class='content'>$content</div>
+                            <div >
+                                <div class='option'>$time[0]:$time[1]</div>
+                                <div class='option' onclick=\"location.href='./comment_update_view.php?comment_id=$comment_id&account=$account&content=$content'\">編輯</div>
+                                <div class='option' onclick=\"location.href='./comment_delete.php?comment_id=$comment_id&account=$account'\">刪除</div>
+                            </div>
+                            
+                        </div>
+                    ";
+                }
             }
-            echo'</tr>';
-            
-        }
-    ?>
-    </table>
-</center>
+        ?>
+    </div>
 
-<!-- <form method="post" action="./update.php">
-    
-    <label>内容：</label><br>
-    <textarea name="content">
-        
-    </textarea><br>
-    <input type="submit" value="修改">
-</form> -->
+    <!-- 傳送鍵 -->
+    <div class="talk_input">
+        <form method = "post" action="./comment_add.php"> 
+            <input type=text class="talk_word"  size="12" name="content"required>
+            <input type="submit" class="talk_sub"  value="傳送" >
+        </form>
+    </div>
+
+</div>
