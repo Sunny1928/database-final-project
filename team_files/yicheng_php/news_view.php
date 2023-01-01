@@ -10,8 +10,13 @@
         }
 </style>
 
-<!-- 新增按鈕 -->
-<input type="button" value="新增" onclick="location.href='./news_add_view.php'">
+<?php 
+    if( $_SESSION["permission"] != "student"){
+        echo "<input type='button' value='新增' onclick=\"location.href='./news_add_view.php'\">";
+    }
+?>
+
+
 
 <center>
     
@@ -31,7 +36,7 @@
                 $account = $row[3];
                 
                 # 判斷是不是本人和身分是否為學生 , 都符合的人不能編輯其他使用者的公告
-                if($account != $_SESSION["account"] && $_SESSION["permission"] == "student"){
+                if( $_SESSION["permission"] == "student"){
             
                     echo "
                     <div>
@@ -53,5 +58,7 @@
             }
         ?>
     </div>
+
+    
     
 </center>

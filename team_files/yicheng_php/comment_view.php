@@ -97,16 +97,31 @@
                 $account = $row[3];
                 
                 # 判斷是不是本人和身分是否為學生 , 都符合的人不能編輯其他使用者的公告
-                if($account != $_SESSION["account"] && $_SESSION["permission"]=="student"){
-            
-                    echo "
+                if($account != $_SESSION["account"] ){
+                    if ($_SESSION["permission"]=="student"){
+                        echo "
                         <div class='left_dialog'>
                             <div class='content'>$content</div>
                             <div >
                                 <div class='option'>$time[0]:$time[1]</div>
                             </div>                            
                         </div>
-                    ";
+                        ";
+                    }
+                    else {
+                        echo "
+                        <div class='left_dialog'>
+                            <div class='content'>$content</div>
+                            <div >
+                                <div class='option'>$time[0]:$time[1]</div>
+                                <div class='option' onclick=\"location.href='./comment_update_view.php?comment_id=$comment_id&account=$account&content=$content'\">編輯</div>
+                                <div class='option' onclick=\"location.href='./comment_delete.php?comment_id=$comment_id&account=$account'\">刪除</div>
+                            </div>                          
+                        </div>
+                        ";
+                    }
+                    
+                    
             
                 } 
                 else {

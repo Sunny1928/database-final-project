@@ -6,7 +6,10 @@
 
     $account = $_GET["account"];
     $comment_id =$_GET["comment_id"];
-    $sql ="DELETE FROM comment WHERE comment_id = $comment_id and account = $account ";
-    $result = $conn->query($sql);
-    header('Location: ./comment_view.php'); 
+    $sql ="DELETE FROM comment WHERE comment_id = ? and account = ? ";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is",$comment_id,$account);
+    $stmt->execute();
+    mysqli_stmt_close($stmt);
+    header('Location: comment_view.php'); 
 ?> 

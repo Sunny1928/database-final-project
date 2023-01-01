@@ -6,8 +6,11 @@
     
     $account = $_SESSION["account"];
     $content = $_POST["content"];
-    $sql= "INSERT INTO news (account , content) VALUE($account,'$content')";
-    $result = $conn->query($sql);
+    $sql= "INSERT INTO news (account , content) VALUE(?,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss",$account,$content);
+    $stmt->execute();
+    mysqli_stmt_close($stmt);
 
     header('Location: ./news_view.php'); 
     

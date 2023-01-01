@@ -8,8 +8,11 @@
     $comment_id = $_POST["comment_id"];
     $content = $_POST["content"];
 
-    $sql = "UPDATE  comment SET content = '$content' WHERE account = $account and comment_id = $comment_id";
-    $result = $conn->query($sql);
+    $sql = "UPDATE  comment SET content = ? WHERE account = ? and comment_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssi",$content,$account,$comment_id);
+    $stmt->execute();
+    mysqli_stmt_close($stmt);
     
-    header('Location: ./comment_view.php'); 
+    header('Location: comment_view.php'); 
 ?>

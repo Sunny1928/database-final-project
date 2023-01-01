@@ -7,8 +7,11 @@
     $content = $_POST["content"];
     $news_id = $_POST["news_id"];
     
-    $sql= "UPDATE news SET content = '$content' WHERE account = '$account' and news_id = '$news_id'";
-    $result = $conn->query($sql);
+    $sql= "UPDATE news SET content = '$content' WHERE account = ? and news_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si",$account,$news_id);
+    $stmt->execute();
+    mysqli_stmt_close($stmt);
 
     header('Location: ./news_view.php');
 ?>
