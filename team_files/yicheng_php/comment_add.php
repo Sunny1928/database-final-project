@@ -1,3 +1,4 @@
+<!-- 新增訊息-功能 -->
 <?php
     session_start();
     require_once('./connect_db.php');
@@ -9,7 +10,7 @@
     $sql =  "INSERT INTO comment (account , content) VALUE($account,'$content')";
     $result = $conn->query($sql);
 
-    header('Location: comment_view.php'); 
+    header('Location: ./comment_view.php'); 
 
 
 ?>

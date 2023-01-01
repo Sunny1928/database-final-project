@@ -1,4 +1,4 @@
-<!-- 公告介面 -->
+<!-- 更新公告-介面 -->
 <center>
 
     <form method="post" action="./news_update.php">

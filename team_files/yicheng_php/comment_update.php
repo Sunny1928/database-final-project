@@ -11,5 +11,5 @@
     $sql = "UPDATE  comment SET content = '$content' WHERE account = $account and comment_id = $comment_id";
     $result = $conn->query($sql);
     
-    header('Location: comment_view.php'); 
+    header('Location: ./comment_view.php'); 
 ?>

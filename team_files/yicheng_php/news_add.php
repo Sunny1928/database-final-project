@@ -1,3 +1,4 @@
+<!-- 新增公告-功能 -->
 <?php 
     session_start();
     require_once('./connect_db.php');

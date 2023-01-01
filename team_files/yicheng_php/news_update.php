@@ -1,4 +1,4 @@
-<!-- 更新公告資料 -->
+<!-- 更新公告-功能 -->
 <?php 
     require_once('./connect_db.php');
     $conn = connect_db();
