@@ -1,16 +1,8 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $servername = "localhost";
-		$username = "a10955pysy";
-		$password = "qwertyuiop";
-		$dbname = "school_dormitory_db";
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-		if (!$conn) {
-		    die("Connection failed: " . mysqli_connect_error());
-		}
-	    echo "Connected successfully";
+        require_once('./connect_db.php');
+    	$conn = connect_db();
 		
 		$_POST['password'] = password_hash($_POST["password"] ,PASSWORD_DEFAULT);
 
@@ -19,11 +11,17 @@
 		$type = 'student';
 		$stmt = $conn->prepare($sql);
 		$stmt->bind_param('sssiss' ,$_POST['name'] , $_POST['password'] , $_POST['email'] , $_POST['phone'] , $_POST['account'] , $type);
-
 		$stmt->execute();	
-
-		header("Location: ../login_view.php" , 301);
+		
+		/*
+		 * new student
+		 */
+		$sql = "INSERT INTO Student (academic_year , student_id ,major_year , gender , account) VALUES(?, ?, ?, ?, ?)";
+		$stmt = $conn->prepare($sql);		
+		$stmt->bind_param('isiss' ,$_POST['academic_year'] , $_POST['student_id'] , $_POST['major_year'] , $_POST['gender'] , $_POST['account']);
+		$stmt->execute();	
+		
+		header("Location: ../index.php" , 301);
         die();
 	}
 ?>
-

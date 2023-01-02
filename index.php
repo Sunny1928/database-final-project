@@ -79,53 +79,58 @@
       <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
       <form method="post" action="./service/register.php">
         <div class="text-center mb-3">
-        <!-- Account input -->
+
         <div class="form-outline mb-4">
           <input required type="text" name="account" id="registerAccount" class="form-control" />
           <label class="form-label" for="registerAccount">Account</label>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
-
-        <!-- Password input -->
         <div class="form-outline mb-4">
           <input required type="password" name="password" id="registerPassword" class="form-control" />
           <label class="form-label" for="registerPassword">Password</label>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
-  
-        <!-- Name input -->
         <div class="form-outline mb-4">
           <input required type="text" name="name" id="registerName" class="form-control" />
           <label class="form-label" for="registerName">Name</label>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
-  
-        <!-- Email input -->
         <div class="form-outline mb-4">
           <input required type="email" name="email" id="registerEmail" class="form-control" />
           <label class="form-label" for="registerEmail">Email</label>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
-
-        <!-- Phone input -->
         <div class="form-outline mb-4">
           <input required type="tel" name="phone" id="registerPhone" class="form-control" />
           <label class="form-label" for="registerPhone">Phone</label>
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
 
-        <!-- Gender input -->
-        <div class="form-check form-check-inline mb-4">
-          <input name="sex" value="male" class="form-check-input" type="radio" id="male"/>
-          <label class="form-check-label" for="male">男</label>
+        <div class="form-outline mb-4">
+          <input required type="number" name="academic_year" id="registerAcademicYear" class="form-control" />
+          <label class="form-label" for="registerAcademicYear">Academic Year</label>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
+        </div>
+        <div class="form-outline mb-4">
+          <input required type="number" name="major_year" id="registerMajorYear" class="form-control" />
+          <label class="form-label" for="registerMajorYear">Major Year</label>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
+        </div>
+        <div class="form-outline mb-4">
+          <input required type="text" name="student_id" id="registerStudentNo" class="form-control" />
+          <label class="form-label" for="registerStudentNo">Student No</label>
+          <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
 
         <div class="form-check form-check-inline mb-4">
-          <input name="sex" value="female" class="form-check-input" type="radio" id="female"/>
+          <input name="gender" value="male" class="form-check-input" type="radio" id="male"/>
+          <label class="form-check-label" for="male">男</label>
+        </div>
+        <div class="form-check form-check-inline mb-4">
+          <input name="gender" value="female" class="form-check-input" type="radio" id="female"/>
           <label class="form-check-label" for="female">女</label>
         </div>
 
-        <!-- Submit button -->
         <button type="submit" value="Login" class="btn btn-primary btn-block mb-3">Sign up</button>
       </form>
     </div>

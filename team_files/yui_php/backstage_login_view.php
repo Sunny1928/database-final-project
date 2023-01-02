@@ -45,8 +45,6 @@
             $stmt = $conn->prepare($sql);
             $stmt->bind_param('s' ,$root);
             $stmt->execute();
-
-
         }
 
 ?>
