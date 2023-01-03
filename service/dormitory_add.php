@@ -5,7 +5,7 @@
     
     $name = $_POST["name"];
 
-    $sql= "INSERT INTO dormitory (`name`) VALUE(?)";
+    $sql= "INSERT INTO Dormitory (`name`) VALUE(?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s",$name);
     $stmt->execute();

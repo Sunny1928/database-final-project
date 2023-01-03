@@ -15,7 +15,7 @@
     // echo $room_number;
     // echo $account;
 
-    $sql= "INSERT INTO equipment (`name`, expired_year, `state`, room_number, account) VALUE(?,?,?,?,?)";
+    $sql= "INSERT INTO Equipment (`name`, expired_year, `state`, room_number, account) VALUE(?,?,?,?,?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sisis",$name,$expired_year,$state,$room_number,$account);
     $stmt->execute();

@@ -5,7 +5,7 @@
 
     $rule_id = $_GET["rule_id"];
 
-    $sql = "DELETE FROM rule WHERE rule_id = ?";
+    $sql = "DELETE FROM Rule WHERE rule_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$rule_id);
     $stmt->execute();

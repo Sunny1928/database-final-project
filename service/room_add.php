@@ -8,7 +8,7 @@
     $fee = $_POST["fee"];
     $dormitory_id = $_POST["dormitory_id"];
 
-    $sql= "INSERT INTO room (`room_number`, `num_of_people`, `fee`, `dormitory_id`) VALUE(?, ?, ?, ?)";
+    $sql= "INSERT INTO Room (`room_number`, `num_of_people`, `fee`, `dormitory_id`) VALUE(?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iiii",$room_number, $num_of_people, $fee, $dormitory_id);
     $stmt->execute();

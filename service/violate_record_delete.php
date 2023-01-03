@@ -6,7 +6,7 @@
     $violate_record_id = $_GET["violate_record_id"];
     $account = $_SESSION["account"];
 
-    $sql = "DELETE FROM violate_record WHERE violate_record_id = ?";
+    $sql = "DELETE FROM Violate_Record WHERE violate_record_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$violate_record_id);
     $stmt->execute();

@@ -5,7 +5,7 @@
     $content = $_POST["content"];
     $rule_id = $_POST["rule_id"];
     
-    $sql= "UPDATE rule SET `content` = '$content' WHERE rule_id = ?";
+    $sql= "UPDATE Rule SET `content` = '$content' WHERE rule_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$rule_id);
     $stmt->execute();

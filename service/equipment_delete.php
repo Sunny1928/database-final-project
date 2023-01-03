@@ -5,7 +5,7 @@
     
     $equipment_id = $_GET["equipment_id"];
 
-    $sql = "DELETE FROM equipment WHERE equipment_id = ?";
+    $sql = "DELETE FROM Equipment WHERE equipment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$equipment_id);
     $stmt->execute();

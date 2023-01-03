@@ -615,7 +615,7 @@
           require_once('./service/connect_db.php');
           $conn = connect_db();
 
-          $sql= "SELECT * FROM news";
+          $sql= "SELECT * FROM News";
           $result = $conn->query($sql);
           
           while($row=mysqli_fetch_array($result)){
@@ -740,7 +740,7 @@
             <div class="card-body h-70" style="position: relative; height: 770px; overflow: scroll;">
 
               <?php
-                $sql =  "SELECT * FROM comment";
+                $sql =  "SELECT * FROM Comment";
                 $result = $conn->query($sql);
                 
                 while($row=mysqli_fetch_array($result)){
@@ -856,7 +856,7 @@
             <!-- Add -->
             <form method="post" id="add_message" action="./service/comment_add.php">
               <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                <img src="" alt="avatar 3" style="width: 40px; height: 100%; border-radius: 100%;">
+                <img src="./image/baby.jpg" alt="avatar 3" style="width: 40px; height: 100%; border-radius: 100%;">
                 <input name="content" required type="text" class="form-control form-control-lg"
                   id="exampleFormControlInput1" placeholder="Type message">
                 <a class="ms-3" onclick="document.getElementById('add_message').submit();"><i
@@ -1340,11 +1340,8 @@
       </div>
     </div>
   </main>
-</body>
 
-</html>
-
-<script>
+  <script>
   document.querySelectorAll('.form-outline').forEach((formOutline) => {
     new mdb.Input(formOutline).init();
   });
@@ -1531,3 +1528,7 @@
     background-color: #e0e0e0;
   }
 </style>
+</body>
+
+</html>
+

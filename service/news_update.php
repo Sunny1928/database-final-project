@@ -7,7 +7,7 @@
     $content = $_POST["content"];
     $news_id = $_POST["news_id"];
     
-    $sql= "UPDATE news SET content = '$content' WHERE account = ? and news_id = ?";
+    $sql= "UPDATE News SET content = '$content' WHERE account = ? and news_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si",$account,$news_id);
     $stmt->execute();

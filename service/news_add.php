@@ -6,7 +6,7 @@
     
     $account = $_SESSION["account"];
     $content = $_POST["content"];
-    $sql= "INSERT INTO news (account , content) VALUE(?,?)";
+    $sql= "INSERT INTO News (account , content) VALUE(?,?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss",$account,$content);
     $stmt->execute();

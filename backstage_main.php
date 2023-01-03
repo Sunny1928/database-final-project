@@ -2,7 +2,7 @@
 	session_start();
 	if (!isset($_SESSION["permission"]) || $_SESSION['permission']!="system_manager" || $_SESSION["account"] != "root"){
 					
-		Header("Location: ./login.php" , 301);
+		Header("Location: ./backstage_index.php" , 301);
 		die();
 	}		
 ?>
@@ -1450,7 +1450,7 @@
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM rule";
+                      $sql = "SELECT * FROM Rule";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -1942,12 +1942,8 @@
     </div>
 
   </main>
-</body>
 
-</html>
-
-
-<script>
+  <script>
   document.querySelectorAll('.form-outline').forEach((formOutline) => {
     new mdb.Input(formOutline).init();
   });
@@ -2125,6 +2121,8 @@
     background: #eee;
   }
 </style>
-<script>
+</body>
 
-</script>
+</html>
+
+

@@ -16,7 +16,7 @@
     echo $room_number;
     echo $account;
     
-    $sql= "UPDATE equipment SET `name` = '$name', expired_year = '$expired_year', room_number = '$room_number', `state` = '$state', `account` = '$account' WHERE equipment_id = ?";
+    $sql= "UPDATE Equipment SET `name` = '$name', expired_year = '$expired_year', room_number = '$room_number', `state` = '$state', `account` = '$account' WHERE equipment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$equipment_id);
     $stmt->execute();

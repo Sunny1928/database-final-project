@@ -5,7 +5,7 @@
     
     $content = $_POST["content"];
 
-    $sql= "INSERT INTO rule (`content`) VALUE(?)";
+    $sql= "INSERT INTO Rule (`content`) VALUE(?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s",$content);
     $stmt->execute();

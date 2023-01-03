@@ -20,7 +20,7 @@
     echo $account;
 
     
-    $sql= "UPDATE violate_record SET `rule_id` = '$rule_id', student_account = '$student_account', `point` = '$point', `dormitory_supervisor_account` = '$dormitory_supervisor_account' WHERE violate_record_id = ?";
+    $sql= "UPDATE Violate_Record SET `rule_id` = '$rule_id', student_account = '$student_account', `point` = '$point', `dormitory_supervisor_account` = '$dormitory_supervisor_account' WHERE violate_record_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$violate_record_id);
     $stmt->execute();

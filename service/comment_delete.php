@@ -5,7 +5,7 @@
 
     $account = $_GET["account"];
     $comment_id =$_GET["comment_id"];
-    $sql ="DELETE FROM comment WHERE comment_id = ? and account = ? ";
+    $sql ="DELETE FROM Comment WHERE comment_id = ? and account = ? ";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("is",$comment_id,$account);
     $stmt->execute();

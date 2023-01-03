@@ -7,7 +7,7 @@
     $comment_id = $_POST["comment_id"];
     $content = $_POST["content"];
 
-    $sql = "UPDATE  comment SET content = ? WHERE account = ? and comment_id = ?";
+    $sql = "UPDATE Comment SET content = ? WHERE account = ? and comment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi",$content,$account,$comment_id);
     $stmt->execute();

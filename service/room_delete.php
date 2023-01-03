@@ -5,7 +5,7 @@
 
     $room_number = $_GET["room_number"];
 
-    $sql = "DELETE FROM room WHERE room_number = ?";
+    $sql = "DELETE FROM Room WHERE room_number = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$room_number);
     $stmt->execute();

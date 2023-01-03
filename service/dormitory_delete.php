@@ -5,7 +5,7 @@
 
     $dormitory_id = $_GET["dormitory_id"];
 
-    $sql = "DELETE FROM dormitory WHERE dormitory_id = ?";
+    $sql = "DELETE FROM Dormitory WHERE dormitory_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i",$dormitory_id);
     $stmt->execute();
