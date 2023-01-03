@@ -14,7 +14,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
@@ -30,59 +32,72 @@
         <div class="mt-4">
           <div id="header-content" class="w-auto">
             <div class="d-flex justify-content-center">
-              <img src="baby.jpg" alt="avatar" class="rounded-circle img-fluid mb-3 m-auto" style="max-width: 100px;">
+              <img src="./image/baby.jpg" alt="avatar" class="rounded-circle img-fluid mb-3 m-auto"
+                style="max-width: 100px;">
             </div>
             <h4 class="text-center">
-              <span style="white-space: nowrap;">Ann Smith</span>
+              <span style="white-space: nowrap;"><?php echo $_SESSION['name']?></span>
             </h4>
-            <p class="text-center">ann_s@mdbootstrap.com</p>
+            <p class="text-center"><?php echo $_SESSION['email']?></p>
           </div>
           <hr class="mb-0">
         </div>
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a class="list-group-item list-group-item-action py-2 ripple pb-2 active" id="tab-dashboard"
-            data-mdb-toggle="pill" href="#pills-dashboard" role="tab" aria-controls="pills-dashboard"
-            aria-selected="true">
-            <i class="fas fa-user-circle pe-3"></i>DashBoard
+        <div class="align-items-end list-group list-group-flush mx-3 mt-4">
+
+          <a class="list-group-item list-group-item-action py-2 ripple active " id="tab-student" data-mdb-toggle="pill"
+            href="#pills-student" role="tab" aria-controls="pills-student" aria-selected="true">
+            <i class="fas fa-school pe-3"></i>學生
           </a>
-          <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-student" data-mdb-toggle="pill"
-            href="#pills-student" role="tab" aria-controls="pills-student" aria-selected="false">
-            <i class="fas fa-envelope pe-3"></i>學生
-          </a>
-          <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-system-manager"
-            data-mdb-toggle="pill" href="#pills-system-manager" role="tab" aria-controls="pills-system-manager"
-            aria-selected="false">
-            <i class="fas fa-paper-plane pe-3"></i>系統管理員
+          <a class="list-group-item list-group-item-action py-2 ripple" id="tab-system-manager" data-mdb-toggle="pill"
+            href="#pills-system-manager" role="tab" aria-controls="pills-system-manager" aria-selected="false">
+            <i class="fas fa-briefcase pe-3"></i>系統管理員
           </a>
           <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-dormitory-supervisor"
             data-mdb-toggle="pill" href="#pills-dormitory-supervisor" role="tab"
             aria-controls="pills-dormitory-supervisor" aria-selected="false">
-            <i class="fas fa-paper-plane pe-3"></i>舍監
+            <i class="fas fa-building pe-3"></i>舍監
           </a>
           <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-dormitory" data-mdb-toggle="pill"
             href="#pills-dormitory" role="tab" aria-controls="pills-dormitory" aria-selected="false">
-            <i class="fas fa-paper-plane pe-3"></i>宿舍
+            <i class="fas fa-house-chimney pe-3"></i>宿舍大樓
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-room" data-mdb-toggle="pill"
+            href="#pills-room" role="tab" aria-controls="pills-room" aria-selected="false">
+            <i class="fas fa-door-open pe-3"></i>宿舍房間
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-equipment" data-mdb-toggle="pill"
+            href="#pills-equipment" role="tab" aria-controls="pills-equipment" aria-selected="false">
+            <i class="fas fa-bed pe-3"></i>宿舍房間設備
+          </a>
+          <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-live-in" data-mdb-toggle="pill"
+            href="#pills-live-in" role="tab" aria-controls="pills-live-in" aria-selected="false">
+            <i class="fas fa-list pe-3"></i>學生住宿資料
           </a>
           <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-rule" data-mdb-toggle="pill"
             href="#pills-rule" role="tab" aria-controls="pills-rule" aria-selected="false">
-            <i class="fas fa-paper-plane pe-3"></i>規範
+            <i class="fas fa-ruler pe-3"></i>規範
           </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple pb-2 pt-2">
-            <i class="fas fa-user-astronaut pe-3"></i>Log out
+          <a class="list-group-item list-group-item-action py-2 ripple pb-2" id="tab-" data-mdb-toggle="pill"
+            href="#pills-violate-record" role="tab" aria-controls="pills-violate-record" aria-selected="false">
+            <i class="fas fa-book pe-3"></i>學生違規紀錄
           </a>
+        </div>
+        <div class="list-group list-group-flush mx-3">
+          <a href="./index.php" class="list-group-item py-2 ripple pb-2">
+            <i class="fas fa-right-from-bracket pe-3"></i>登出
+          </a>
+        </div>
+        <div class=" text-center text-reset mt-5">
+          <em><small>Copyright © 2023 - PYSY</small></em>
         </div>
     </nav>
     <!-- Sidebar -->
   </header>
   <main>
     <div class="tab-content h-100">
-      <!--dashboard-->
-      <div class="tab-pane fade show active" id="pills-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
-
-      </div>
 
       <!--student-->
-      <div class="tab-pane fade" id="pills-student" role="tabpanel" aria-labelledby="tab-student">
+      <div class="tab-pane fade show active" id="pills-student" role="tabpanel" aria-labelledby="tab-student">
 
         <!--Title-->
         <div class="card m-2 px-4 py-3">
@@ -102,7 +117,9 @@
                   <thead class="datatable-header">
                     <tr>
                       <th scope="col">帳號</th>
-                      <th scope="col">姓名</th>
+                      <th scope="col">名字</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">電話</th>
                       <th scope="col">學號</th>
                       <th scope="col">學年</th>
                       <th scope="col">系級</th>
@@ -112,68 +129,163 @@
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                  require_once('./service/connect_db.php');
-                  $conn = connect_db();
-                      
-                  $sql = "SELECT * FROM Student JOIN User ON Student.account = User.account";
-                  $result = $conn->query($sql);
-            
-                  if (mysqli_num_rows($result) > 0) 
-                  {
-                    while ($userinfo = mysqli_fetch_assoc($result)) 
-                    {
-                      $student_id = $userinfo['student_id'];
-                                                                      
-                      echo "<tr data-mdb-index='0'>" .
-                        "<td> ". $userinfo['account'] ."</td> ".
-                        "<td> " . $userinfo['name'] . "</td>".
-                        "<td> " . $student_id . "</td>".
-                        "<td> " . $userinfo['academic_year'] . "</td>".
-                        "<td> " . $userinfo['major_year'] . "</td>".
-                        "<td> " . $userinfo['gender'] . "</td>".
-                        "<td>
-                          <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateStudentModal$student_id'><i class='fa fa-pencil'></i></button>
-                          <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteStudentModal$student_id'><i class='fa fa-trash'></i></button>
-                        </td>".
-                        "</tr>";
+                      require('./service/connect_db.php');
+                      $conn = connect_db();
 
-                      // Update Modal
-                      echo "
-                        <div class='modal fade' id='updateStudentModal$student_id' tabindex='-1' aria-labelledby='updateStudentModalLabel' aria-hidden='true'>
-                          <div class='modal-dialog modal-dialog-centered'>
+                      $sql = "SELECT * FROM Student JOIN User ON User.account = Student.account";
+                      $result = $conn->query($sql);
+
+                      if (mysqli_num_rows($result) > 0) 
+                      {
+                        while ($userinfo = mysqli_fetch_assoc($result)) 
+                        {
+                          $account = $userinfo['account'];
+                          $name = $userinfo['name'];
+                          $email = $userinfo['email'];
+                          $phone = $userinfo['phone'];
+                          $student_id = $userinfo['student_id'];
+                          $academic_year = $userinfo['academic_year'];
+                          $major_year = $userinfo['major_year'];
+                          $gender = $userinfo['gender'];
+                          
+                          echo "<tr>" .
+                            "<td> ". $account ."</td> ".
+                            "<td> " . $name . "</td>".
+                            "<td> " . $email . "</td>".
+                            "<td> " . $phone . "</td>".
+                            "<td> " . $student_id . "</td>".
+                            "<td> " . $academic_year . "</td>".
+                            "<td> " . $major_year . "</td>".
+                            "<td> " . $gender . "</td>".
+                            "<td>
+                              <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateStudentModal$account'><i class='fa fa-pencil'></i></button>
+                              <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteStudentModal$account'><i class='fa fa-trash'></i></button>
+                            </td>".
+                            "</tr>";
+
+                          // Update Modal
+                          echo "
+                          <div class='modal fade' id='updateStudentModal$account' tabindex='-1' aria-labelledby='updateStudentModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                            <form method='post' action='./service/student_update.php'>
                             <div class='modal-content'>
                               <div class='modal-header'>
                                 <h5 class='modal-title' id='updateStudentModalLabel'>修改學生</h5>
                                 <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
                               </div>
-                              <div class='modal-body'>...</div>
+                              <div class='modal-body'>
+                                <div class='text-center mb-3'>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$account' readonly required type='text' name='account' id='registerAccount' class='form-control' />
+                                    <label class='form-label' for='registerAccount'>帳號</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$name' required type='text' name='name' id='registerName' class='form-control' />
+                                    <label class='form-label' for='registerName'>名稱</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$email' required type='email' name='email' id='registerEmail' class='form-control' />
+                                    <label class='form-label' for='registerEmail'>Email</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$phone' required type='tel' name='phone' id='registerPhone' class='form-control' />
+                                    <label class='form-label' for='registerPhone'>電話</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$academic_year' required type='number' name='academic_year' id='registerAcademicYear'
+                                      class='form-control' />
+                                    <label class='form-label' for='registerAcademicYear'>學年</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$major_year' required type='number' name='major_year' id='registerMajorYear' class='form-control' />
+                                    <label class='form-label' for='registerMajorYear'>系級</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$student_id' required type='text' name='student_id' id='registerStudentNo' class='form-control' />
+                                    <label class='form-label' for='registerStudentNo'>學號</label>
+                                    <div class='form-notch'>
+                                      <div class='form-notch-leading' style='width: 9px;'></div>
+                                      <div class='form-notch-middle' style='width: 114.4px;'></div>
+                                      <div class='form-notch-trailing'></div>
+                                    </div>
+                                  </div>
+                                  <div class='form-check form-check-inline mb-4'>";
+                                  if($gender == 'male'){
+                                    echo "<input checked name='gender' value='male' class='form-check-input' type='radio' id='male' />";
+                                  }else{
+                                    echo "<input name='gender' value='male' class='form-check-input' type='radio' id='male' />";
+                                  }
+                                    echo "<label class='form-check-label' for='male'>男</label>
+                                  </div>
+                                  <div class='form-check form-check-inline mb-4'>";
+                                  if($gender == 'female'){
+                                    echo "<input checked name='gender' value='female' class='form-check-input' type='radio' id='female' />";
+                                  }else{
+                                    echo "<input name='gender' value='female' class='form-check-input' type='radio' id='female' />";
+                                  }
+                                    
+                                    echo "<label class='form-check-label' for='female'>女</label>
+                                  </div>
+                                </div>
+                              </div>
                               <div class='modal-footer'>
                                 <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
-                                <button type='button' class='btn btn-primary'>確認</button>
+                                <button type='submit' class='btn btn-primary'>確認</button>
                               </div>
                             </div>
-                          </div>
-                        </div>";
+                            </form>
+                            </div>
+                          </div>";
 
-                      // Delete Modal
-                      echo "
-                      <div class='modal fade' id='deleteStudentModal$student_id' tabindex='-1' aria-labelledby='deleteStudentModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog modal-dialog-centered'>
-                          <div class='modal-content'>
-                            <div class='modal-header'>
-                              <h5 class='modal-title' id='deleteStudentModalLabel'>刪除學生</h5>
-                              <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
+                          // Delete  Modal
+                          echo "
+                          <div class='modal fade' id='deleteStudentModal$account' tabindex='-1' aria-labelledby='deleteStudentModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                              <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='deleteStudentModalLabel'>刪除學生</h5>
+                                </div>
+                                <div class='modal-body'>您確認要刪除學生嗎？</div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='button' class='btn btn-primary' onclick='location.href=\"./service/student_delete.php?account=$account\"'>確認</button>
+                                </div>
+                              </div>
                             </div>
-                            <div class='modal-body'>您確認要刪除學生嗎？</div>
-                            <div class='modal-footer'>
-                              <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
-                              <button type='button' class='btn btn-primary'>確認</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>";
-                    }
-                  }?>
+                          </div>";
+                        }
+                      }
+                    ?>
                   </tbody>
                 </table>
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
@@ -183,6 +295,7 @@
                   <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
                 </div>
               </div>
+
               <div class="datatable-pagination d-flex justify-content-end">
                 <div class="datatable-pagination-buttons">
                   <button data-mdb-ripple-color="dark"
@@ -201,13 +314,12 @@
         <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
-            <form method="post" action="./service/register.php">
-              <div class="modal-content">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addSystemManagerModalLabel">新增學生</h5>
 
-                <div class="modal-header">
-                  <h5 class="modal-title" id="addStudentModalLabel">新增學生</h5>
-                </div>
-
+              </div>
+              <form method="post" action="./service/student_add.php">
                 <div class="modal-body">
                   <div class="text-center mb-3">
                     <div class="form-outline mb-4">
@@ -220,8 +332,35 @@
                       </div>
                     </div>
                     <div class="form-outline mb-4">
+                      <input required type="password" name="password" id="registerPassword" class="form-control" />
+                      <label class="form-label" for="registerPassword">密碼</label>
+                      <div class="form-notch">
+                        <div class="form-notch-leading" style="width: 9px;"></div>
+                        <div class="form-notch-middle" style="width: 114.4px;"></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+                    <div class="form-outline mb-4">
                       <input required type="text" name="name" id="registerName" class="form-control" />
-                      <label class="form-label" for="registerName">姓名</label>
+                      <label class="form-label" for="registerName">名稱</label>
+                      <div class="form-notch">
+                        <div class="form-notch-leading" style="width: 9px;"></div>
+                        <div class="form-notch-middle" style="width: 114.4px;"></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input required type="email" name="email" id="registerEmail" class="form-control" />
+                      <label class="form-label" for="registerEmail">Email</label>
+                      <div class="form-notch">
+                        <div class="form-notch-leading" style="width: 9px;"></div>
+                        <div class="form-notch-middle" style="width: 114.4px;"></div>
+                        <div class="form-notch-trailing"></div>
+                      </div>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <input required type="tel" name="phone" id="registerPhone" class="form-control" />
+                      <label class="form-label" for="registerPhone">電話</label>
                       <div class="form-notch">
                         <div class="form-notch-leading" style="width: 9px;"></div>
                         <div class="form-notch-middle" style="width: 114.4px;"></div>
@@ -256,7 +395,6 @@
                         <div class="form-notch-trailing"></div>
                       </div>
                     </div>
-
                     <div class="form-check form-check-inline mb-4">
                       <input name="gender" value="male" class="form-check-input" type="radio" id="male" />
                       <label class="form-check-label" for="male">男</label>
@@ -265,19 +403,15 @@
                       <input name="gender" value="female" class="form-check-input" type="radio" id="female" />
                       <label class="form-check-label" for="female">女</label>
                     </div>
-
-                    <button type="submit" value="Login" class="btn btn-primary btn-block mb-3">Sign up</button>
-
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">取消</button>
-                  <button type="button" class="btn btn-primary">確認</button>
+                  <button type="submit" class="btn btn-primary">確認</button>
                 </div>
-
-              </div>
+              </form>
+            </div>
           </div>
-          </form>
         </div>
       </div>
 
@@ -520,7 +654,7 @@
                       <th scope="col">名字</th>
                       <th scope="col">Email</th>
                       <th scope="col">電話</th>
-                      <th scope="col">宿舍ID</th>
+                      <th scope="col">宿舍大樓ID</th>
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
@@ -585,7 +719,7 @@
                                   </div>
                                   <div class='form-outline mb-4'>
                                     <input value='$dormitory_id' required type='tel' name='dormitory_id' id='DomitorySupervisorDormitoryId' class='form-control' />
-                                    <label class='form-label' for='DomitorySupervisorDormitoryId'>宿舍ID</label>
+                                    <label class='form-label' for='DomitorySupervisorDormitoryId'>宿舍大樓ID</label>
                                     <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                   </div>
                                 </div>
@@ -704,7 +838,7 @@
                       <div class="form-outline mb-4">
                         <input required type="tel" name="dormitory_id" id="DomitorySupervisorDormitoryId"
                           class="form-control" />
-                        <label class="form-label" for="DomitorySupervisorDormitoryId">宿舍ID</label>
+                        <label class="form-label" for="DomitorySupervisorDormitoryId">宿舍大樓ID</label>
                         <div class="form-notch">
                           <div class="form-notch-leading" style="width: 9px;"></div>
                           <div class="form-notch-middle" style="width: 114.4px;"></div>
@@ -731,9 +865,9 @@
         <!--Title-->
         <div class="card m-2 px-4 py-3">
           <div class="d-flex justify-content-between">
-            <h4 class="mb-0">宿舍資料</h4>
-            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal'
-              data-mdb-target='#addDomitoryModal'><i class='fa fa-add me-1'></i> 新增</button>
+            <h4 class="mb-0">宿舍大樓資料</h4>
+            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal' data-mdb-target='#addDomitoryModal'><i
+                class='fa fa-add me-1'></i> 新增</button>
           </div>
         </div>
 
@@ -746,7 +880,7 @@
                   <thead class="datatable-header">
                     <tr>
                       <th scope="col">名字</th>
-                      <th scope="col">宿舍ID</th>
+                      <th scope="col">宿舍大樓ID</th>
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
@@ -778,7 +912,7 @@
                           <form method='post' action='./service/dormitory_update.php'>
                           <div class='modal-content'>
                               <div class='modal-header'>
-                                <h5 class='modal-title' id='updateDomitoryModalLabel'>修改宿舍</h5>
+                                <h5 class='modal-title' id='updateDomitoryModalLabel'>修改宿舍大樓</h5>
                                 <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
                               </div>
                               <div class='modal-body'>
@@ -810,9 +944,9 @@
                             <div class='modal-dialog modal-dialog-centered'>
                               <div class='modal-content'>
                                 <div class='modal-header'>
-                                  <h5 class='modal-title' id='deleteDomitoryModalLabel'>刪除宿舍</h5>
+                                  <h5 class='modal-title' id='deleteDomitoryModalLabel'>刪除宿舍大樓</h5>
                                 </div>
-                                <div class='modal-body'>您確認要刪除宿舍嗎？</div>
+                                <div class='modal-body'>您確認要刪除宿舍大樓嗎？</div>
                                 <div class='modal-footer'>
                                   <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
                                   <button type='button' class='btn btn-primary' onclick='location.href=\"./service/dormitory_delete.php?dormitory_id=$dormitory_id\"'>確認</button>
@@ -847,12 +981,12 @@
         </div>
 
         <!-- Add Modal -->
-        <div class="modal fade" id="addDomitoryModal" tabindex="-1"
-          aria-labelledby="addDomitoryModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addDomitoryModal" tabindex="-1" aria-labelledby="addDomitoryModalLabel"
+          aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="addRuleModalLabel">新增宿舍</h5>
+                <h5 class="modal-title" id="addDomitoryModalLabel">新增宿舍大樓</h5>
 
               </div>
               <div class="modal-body">
@@ -881,6 +1015,413 @@
         </div>
       </div>
 
+      <!-- Room -->
+      <div class="tab-pane fade h-100" id="pills-room" role="tabpanel" aria-labelledby="tab-room">
+
+        <!--Title-->
+        <div class="card m-2 px-4 py-3">
+          <div class="d-flex justify-content-between">
+            <h4 class="mb-0">宿舍房間資料</h4>
+            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal' data-mdb-target='#addRoomModal'><i
+                class='fa fa-add me-1'></i> 新增</button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="card m-2">
+          <section class="border p-4">
+            <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
+              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
+                <table class="table datatable-table">
+                  <thead class="datatable-header">
+                    <tr>
+                      <th scope="col">房號</th>
+                      <th scope="col">住宿人數</th>
+                      <th scope="col">價錢</th>
+                      <th scope="col">宿舍大樓ID</th>
+                      <th scope="col">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody class="datatable-body">
+                    <?php
+                      $sql = "SELECT * FROM Room";
+                      $result = $conn->query($sql);
+
+                      if (mysqli_num_rows($result) > 0) 
+                      {
+                        while ($userinfo = mysqli_fetch_assoc($result)) 
+                        {
+                          $room_number = $userinfo['room_number'];
+                          $num_of_people = $userinfo['num_of_people'];
+                          $fee = $userinfo['fee'];
+                          $dormitory_id = $userinfo['dormitory_id'];
+                          
+                          echo "<tr>" .
+                            "<td> " . $room_number . "</td>".
+                            "<td> " . $num_of_people . "</td>".
+                            "<td> " . $fee . "</td>".
+                            "<td> " . $dormitory_id . "</td>".
+                            "<td>
+                              <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateRoomModal$room_number'><i class='fa fa-pencil'></i></button>
+                              <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteRoomModal$room_number'><i class='fa fa-trash'></i></button>
+                            </td>".
+                            "</tr>";
+
+                          // Update Modal
+                          echo "
+                          <div class='modal fade' id='updateRoomModal$room_number' tabindex='-1' aria-labelledby='updateRoomModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog modal-dialog-centered'>
+                          <form method='post' action='./service/room_update.php'>
+                          <div class='modal-content'>
+                              <div class='modal-header'>
+                                <h5 class='modal-title' id='updateRoomModalLabel'>修改宿舍房間</h5>
+                                <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
+                              </div>
+                              <div class='modal-body'>
+                                <div class='text-center mb-3'>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$room_number' readonly type='text' name='room_number' id='RoomNumber' class='form-control' />
+                                    <label class='form-label' for='RoomNumber'>房號</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$num_of_people' required type='text' name='num_of_people' id='RoomNumber' class='form-control' />
+                                    <label class='form-label' for='RoomNumber'>住宿人數</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$fee' required type='text' name='fee' id='RoomNumber' class='form-control' />
+                                    <label class='form-label' for='RoomNumber'>價錢</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$dormitory_id' required name='dormitory_id' id='RoomId' class='form-control' />
+                                    <label class='form-label' for='RoomId'>宿舍大樓ID</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                <button type='submit' class='btn btn-primary'>確認</button>
+                              </div>
+                          </div>
+                          </form>
+                          </div>
+                          </div>";
+
+                          // Delete Modal
+                          echo "
+                          <div class='modal fade' id='deleteRoomModal$room_number' tabindex='-1' aria-labelledby='deleteRoomModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                              <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='deleteRoomModalLabel'>刪除宿舍房間</h5>
+                                </div>
+                                <div class='modal-body'>您確認要刪除宿舍房間嗎？</div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='button' class='btn btn-primary' onclick='location.href=\"./service/room_delete.php?room_number=$room_number\"'>確認</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>";
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                  <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                  <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                </div>
+              </div>
+              <div class="datatable-pagination d-flex justify-content-end">
+                <div class="datatable-pagination-buttons">
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
+                      class="fa fa-chevron-left"></i></button>
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
+                      class="fa fa-chevron-right"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addRoomModal" tabindex="-1" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addRoomModalLabel">新增宿舍房間</h5>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="./service/room_add.php">
+                  <div class="modal-body">
+                    <div class="text-center mb-3">
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='room_number' id='RoomNumber' class='form-control' />
+                        <label class='form-label' for='RoomNumber'>房號</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='num_of_people' id='RoomNumber' class='form-control' />
+                        <label class='form-label' for='RoomNumber'>住宿人數</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='fee' id='RoomNumber' class='form-control' />
+                        <label class='form-label' for='RoomNumber'>價錢</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required name='dormitory_id' id='RoomId' class='form-control' />
+                        <label class='form-label' for='RoomId'>宿舍大樓ID</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">確認</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equipment -->
+      <div class="tab-pane fade h-100" id="pills-equipment" role="tabpanel" aria-labelledby="tab-equipment">
+
+        <!--Title-->
+        <div class="card m-2 px-4 py-3">
+          <div class="d-flex justify-content-between">
+            <h4 class="mb-0">宿舍設備資料</h4>
+            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal' data-mdb-target='#addEquipmentModal'><i
+                class='fa fa-add me-1'></i> 新增</button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="card m-2">
+          <section class="border p-4">
+            <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
+              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
+                <table class="table datatable-table">
+                  <thead class="datatable-header">
+                    <tr>
+                      <th scope="col">名稱</th>
+                      <th scope="col">購買日期</th>
+                      <th scope="col">使用年限</th>
+                      <th scope="col">設備狀況</th>
+                      <th scope="col">宿舍房間</th>
+                      <th scope="col">宿舍設備ID</th>
+                      <th scope="col">登記帳號</th>
+                      <th scope="col">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody class="datatable-body">
+                    <?php
+                      $sql = "SELECT * FROM Equipment";
+                      $result = $conn->query($sql);
+
+                      if (mysqli_num_rows($result) > 0) 
+                      {
+                        while ($userinfo = mysqli_fetch_assoc($result)) 
+                        {
+                          $name = $userinfo['name'];
+                          $purchase_date = $userinfo['purchase_date'];
+                          $expired_year = $userinfo['expired_year'];
+                          $equipment_id = $userinfo['equipment_id'];
+                          $state = $userinfo['state'];
+                          $room_number = $userinfo['room_number'];
+                          $account = $userinfo['account'];
+                          
+                          echo "<tr>" .
+                            "<td> " . $name . "</td>".
+                            "<td> " . $purchase_date . "</td>".
+                            "<td> " . $expired_year . "</td>".
+                            "<td> " . $state . "</td>".
+                            "<td> " . $room_number . "</td>".
+                            "<td> " . $equipment_id . "</td>".
+                            "<td> " . $account . "</td>".
+                            "<td>
+                              <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateEquipmentModal$equipment_id'><i class='fa fa-pencil'></i></button>
+                              <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteEquipmentModal$equipment_id'><i class='fa fa-trash'></i></button>
+                            </td>".
+                            "</tr>";
+
+                          // Update Modal
+                          echo "
+                          <div class='modal fade' id='updateEquipmentModal$equipment_id' tabindex='-1' aria-labelledby='updateEquipmentModalLabel' aria-hidden='true'>
+                          <div class='modal-dialog modal-dialog-centered'>
+                          <form method='post' action='./service/equipment_update.php'>
+                          <div class='modal-content'>
+                              <div class='modal-header'>
+                                <h5 class='modal-title' id='updateEquipmentModalLabel'>修改宿舍設備</h5>
+                                <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
+                              </div>
+                              <div class='modal-body'>
+                                <div class='text-center mb-3'>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$name' required type='text' name='name' id='EquipmentName' class='form-control' />
+                                    <label class='form-label' for='EquipmentName'>名稱</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$expired_year' required type='text' name='expired_year' id='Equipmentexpired_year' class='form-control' />
+                                    <label class='form-label' for='Equipmentexpired_year'>使用年限</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$state' required type='text' name='state' id='Equipmentstate' class='form-control' />
+                                    <label class='form-label' for='Equipmentstate'>設備狀態</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <div class='form-outline mb-4'>
+                                    <input value='$room_number' required type='text' name='room_number' id='EquipmentNumber' class='form-control' />
+                                    <label class='form-label' for='EquipmentNumber'>房號</label>
+                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  </div>
+                                  <input value='root' hidden name='account' />
+                                  <input value='$equipment_id' hidden name='equipment_id' />
+                                </div>
+                              </div>
+                              <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                <button type='submit' class='btn btn-primary'>確認</button>
+                              </div>
+                          </div>
+                          </form>
+                          </div>
+                          </div>";
+
+                          // Delete Modal
+                          echo "
+                          <div class='modal fade' id='deleteEquipmentModal$equipment_id' tabindex='-1' aria-labelledby='deleteEquipmentModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                              <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='deleteEquipmentModalLabel'>刪除宿舍設備</h5>
+                                </div>
+                                <div class='modal-body'>您確認要刪除宿舍設備嗎？</div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='button' class='btn btn-primary' onclick='location.href=\"./service/equipment_delete.php?equipment_id=$equipment_id\"'>確認</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>";
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                  <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                  <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                </div>
+              </div>
+              <div class="datatable-pagination d-flex justify-content-end">
+                <div class="datatable-pagination-buttons">
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
+                      class="fa fa-chevron-left"></i></button>
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
+                      class="fa fa-chevron-right"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addEquipmentModal" tabindex="-1" aria-labelledby="addEquipmentModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addEquipmentModalLabel">新增宿舍設備</h5>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="./service/equipment_add.php">
+                  <div class="modal-body">
+                    <div class="text-center mb-3">
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='name' id='EquipmentName' class='form-control' />
+                        <label class='form-label' for='EquipmentName'>名稱</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='expired_year' id='Equipmentexpired_year'
+                          class='form-control' />
+                        <label class='form-label' for='Equipmentexpired_year'>使用年限</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='state' id='Equipmentstate' class='form-control' />
+                        <label class='form-label' for='Equipmentstate'>設備狀態</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='room_number' id='EquipmentNumber' class='form-control' />
+                        <label class='form-label' for='EquipmentNumber'>房號</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <input value='root' hidden name='account' />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">確認</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Rule -->
       <div class="tab-pane fade h-100" id="pills-rule" role="tabpanel" aria-labelledby="tab-rule">
 
@@ -888,8 +1429,8 @@
         <div class="card m-2 px-4 py-3">
           <div class="d-flex justify-content-between">
             <h4 class="mb-0">規範資料</h4>
-            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal'
-              data-mdb-target='#addRuleModal'><i class='fa fa-add me-1'></i> 新增</button>
+            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal' data-mdb-target='#addRuleModal'><i
+                class='fa fa-add me-1'></i> 新增</button>
           </div>
         </div>
 
@@ -1004,8 +1545,7 @@
         </div>
 
         <!-- Add Modal -->
-        <div class="modal fade" id="addRuleModal" tabindex="-1"
-          aria-labelledby="addRuleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addRuleModal" tabindex="-1" aria-labelledby="addRuleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
@@ -1035,6 +1575,367 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Live In -->
+      <div class="tab-pane fade h-100" id="pills-live-in" role="tabpanel" aria-labelledby="tab-live-in">
+
+        <!--Title-->
+        <div class="card m-2 px-4 py-3">
+          <div class="d-flex justify-content-between">
+            <h4 class="mb-0">學生住宿資料</h4>
+            <button class='btn ms-2 btn-primary btn-sm' data-mdb-toggle='modal' data-mdb-target='#addLiveInModal'><i
+                class='fa fa-add me-1'></i> 新增</button>
+          </div>
+        </div>
+
+
+        <!-- Table -->
+        <div class="card m-2">
+          <section class="border p-4">
+            <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
+              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
+                <table class="table datatable-table">
+                  <thead class="datatable-header">
+                    <tr>
+                      <th scope="col">學年</th>
+                      <th scope="col">學期</th>
+                      <th scope="col">學生帳號</th>
+                      <th scope="col">房號</th>
+                      <th scope="col">登記帳號</th>
+                      <th scope="col">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody class="datatable-body">
+                    <?php
+                      $sql = "SELECT * FROM live_in ORDER BY academic_year DESC, semester DESC";
+                      $result = $conn->query($sql);
+
+                      if (mysqli_num_rows($result) > 0) 
+                      {
+                        while ($userinfo = mysqli_fetch_assoc($result)) 
+                        {
+                          $semester = $userinfo['semester'];
+                          $academic_year = $userinfo['academic_year'];
+                          $room_number = $userinfo['room_number'];
+                          $student_account	 = $userinfo['student_account'];
+                          $system_manager_account = $userinfo['system_manager_account'];
+                          $account = $_SESSION['account'];
+                          
+                          echo "<tr>" .
+                            "<td> " . $academic_year . "</td>".
+                            "<td> " . $semester . "</td>".
+                            "<td> " . $student_account	 . "</td>".
+                            "<td> " . $room_number . "</td>".
+                            "<td> " . $system_manager_account . "</td>".
+                            "<td>
+                              <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateLiveInModal$semester$academic_year$room_number$student_account'><i class='fa fa-pencil'></i></button>
+                              <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteLiveInModal$semester$academic_year$room_number$student_account'><i class='fa fa-trash'></i></button>
+                            </td>".
+                            "</tr>";
+
+                          // Update Modal
+                          echo "
+                          <div class='modal fade' id='updateLiveInModal$semester$academic_year$room_number$student_account' tabindex='-1' aria-labelledby='updateLiveInModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                            <form method='post' action='./service/live_in_update.php'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='updateLiveInModalLabel'>修改學生住宿</h5>
+                                  <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
+                                </div>
+                                <div class='modal-body'>
+                                  <div class='text-center mb-3'>
+                                    <div class='form-outline mb-4'>
+                                      <input value='$academic_year' readonly required type='text' name='academic_year' id='liveinacademic_year' class='form-control' />
+                                      <label class='form-label' for='liveinacademic_year'>學年</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    <div class='form-outline mb-4'>
+                                      <input value='$semester' readonly required type='text' name='semester' id='liveinsemester' class='form-control' />
+                                      <label class='form-label' for='liveinsemester'>學期</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    
+                                    <div class='form-outline mb-4'>
+                                      <input value='$student_account' readonly required type='text' name='student_account' id='liveinstudent_account' class='form-control' />
+                                      <label class='form-label' for='liveinstudent_account'>學生帳號</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    <div class='form-outline mb-4'>
+                                      <input value='$room_number' required type='text' name='room_number' id='liveinroom_number' class='form-control' />
+                                      <label class='form-label' for='liveinroom_number'>房號</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    <input value='$account' hidden required name='system_manager_account' />
+                                  </div>
+                                </div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='submit' class='btn btn-primary'>確認</button>
+                                </div>
+                            </div>
+                            </form>
+                            </div>
+                          </div>";
+
+                          // Delete Modal
+                          echo "
+                          <div class='modal fade' id='deleteLiveInModal$semester$academic_year$room_number$student_account' tabindex='-1' aria-labelledby='deleteLiveInModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                              <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='deleteLiveInModalLabel'>刪除學生住宿</h5>
+                                </div>
+                                <div class='modal-body'>您確認要刪除學生住宿嗎？</div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='button' class='btn btn-primary' onclick='location.href=\"./service/live_in_delete.php?semester=$semester&academic_year=$academic_year&room_number=$room_number&student_account=$student_account\"'>確認</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>";
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                  <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                  <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                </div>
+              </div>
+              <div class="datatable-pagination d-flex justify-content-end">
+                <div class="datatable-pagination-buttons">
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
+                      class="fa fa-chevron-left"></i></button>
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
+                      class="fa fa-chevron-right"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Add Modal -->
+        <div class="modal fade" id="addLiveInModal" tabindex="-1" aria-labelledby="addLiveInModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addLiveInModalLabel">新增學生住宿</h5>
+
+              </div>
+              <div class="modal-body">
+                <form method="post" action="./service/live_in_add.php">
+                  <div class="modal-body">
+                    <div class='text-center mb-3'>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='academic_year' id='liveinacademic_year'
+                          class='form-control' />
+                        <label class='form-label' for='liveinacademic_year'>學年</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='semester' id='liveinsemester' class='form-control' />
+                        <label class='form-label' for='liveinsemester'>學期</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='student_account' id='liveinstudent_account'
+                          class='form-control' />
+                        <label class='form-label' for='liveinstudent_account'>學生帳號</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <div class='form-outline mb-4'>
+                        <input required type='text' name='room_number' id='liveinroom_number' class='form-control' />
+                        <label class='form-label' for='liveinroom_number'>房號</label>
+                        <div class='form-notch'>
+                          <div class='form-notch-leading' style='width: 9px;'></div>
+                          <div class='form-notch-middle' style='width: 114.4px;'></div>
+                          <div class='form-notch-trailing'></div>
+                        </div>
+                      </div>
+                      <input value='<?php echo $account?>' hidden required name='system_manager_account' />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">確認</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- Violate Record -->
+      <div class="tab-pane fade h-100" id="pills-violate-record" role="tabpanel" aria-labelledby="tab-violate-record">
+
+        <!--Title-->
+        <div class="card m-2 px-4 py-3">
+          <div class="d-flex justify-content-between">
+            <h4 class="mb-0">學生違規紀錄資料</h4>
+          </div>
+        </div>
+
+
+        <!-- Table -->
+        <div class="card m-2">
+          <section class="border p-4">
+            <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
+              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
+                <table class="table datatable-table">
+                  <thead class="datatable-header">
+                    <tr>
+                      <th scope="col">日期</th>
+                      <th scope="col">規範ID</th>
+                      <th scope="col">規範內容</th>
+                      <th scope="col">學生帳號</th>
+                      <th scope="col">扣點</th>
+                      <th scope="col">登記帳號</th>
+                      <th scope='col'>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody class="datatable-body">
+                    <?php
+                      $sql = "SELECT * FROM Violate_Record JOIN Rule ON Violate_Record.rule_id = Rule.rule_id";
+                    
+                      $result = $conn->query($sql);
+
+                      if (mysqli_num_rows($result) > 0) 
+                      {
+                        while ($userinfo = mysqli_fetch_assoc($result)) 
+                        {
+                          $date = $userinfo['date'];
+                          $rule_id = $userinfo['rule_id'];
+                          $content = $userinfo['content'];
+                          $student_account = $userinfo['student_account'];
+                          $point = $userinfo['point'];
+                          $dormitory_supervisor_account = $userinfo['dormitory_supervisor_account'];
+                          $account = $_SESSION['account'];
+                          $violate_record_id = $userinfo['violate_record_id'];
+
+                          echo "<tr>" .
+                            "<td> " . $date . "</td>".
+                            "<td> " . $rule_id . "</td>".
+                            "<td> " . $content . "</td>".
+                            "<td> " . $student_account . "</td>".
+                            "<td> " . $point . "</td>".
+                            "<td> " . $dormitory_supervisor_account . "</td>".
+                            "<td>
+                              <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateViolateRecordModal$violate_record_id'><i class='fa fa-pencil'></i></button>
+                              <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteViolateRecordModal$violate_record_id'><i class='fa fa-trash'></i></button>
+                            </td>".
+                          "</tr>";
+
+                          // Update Modal
+                          echo "
+                          <div class='modal fade' id='updateViolateRecordModal$violate_record_id' tabindex='-1' aria-labelledby='updateViolateRecordModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                            <form method='post' action='./service/violate_record_update.php'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='updateViolateRecordModalLabel'>修改學生違規紀錄</h5>
+                                  <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
+                                </div>
+                                <div class='modal-body'>
+                                  <div class='text-center mb-3'>
+                                    <div class='form-outline mb-4'>
+                                      <input value='$rule_id' required name='rule_id' id='RuleId' class='form-control' />
+                                      <label class='form-label' for='RuleId'>規範ID</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    <div class='form-outline mb-4'>
+                                      <input value='$student_account' required name='student_account' id='studentaccount' class='form-control' />
+                                      <label class='form-label' for='studentaccount'>學生帳號</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    <div class='form-outline mb-4'>
+                                      <input value='$point' required name='point' id='point' class='form-control' />
+                                      <label class='form-label' for='point'>扣點</label>
+                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    </div>
+                                    <input value='$dormitory_supervisor_account'hidden name='dormitory_supervisor_account'/>
+                                    <input value='$violate_record_id'hidden name='violate_record_id'/>
+                                  </div>
+                                </div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='submit' class='btn btn-primary'>確認</button>
+                                </div>
+                            </div>
+                            </form>
+                            </div>
+                          </div>";
+
+                          // Delete Modal
+                          echo "
+                          <div class='modal fade' id='deleteViolateRecordModal$violate_record_id' tabindex='-1' aria-labelledby='deleteViolateRecordModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog modal-dialog-centered'>
+                              <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='deleteViolateRecordModalLabel'>刪除學生違規紀錄</h5>
+                                </div>
+                                <div class='modal-body'>您確認要刪除學生違規紀錄嗎？</div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                                  <button type='button' class='btn btn-primary' onclick='location.href=\"./service/violate_record_delete.php?violate_record_id=$violate_record_id\"'>確認</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>";
+                        }
+                      }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                  <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                </div>
+                <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                  <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                </div>
+              </div>
+              <div class="datatable-pagination d-flex justify-content-end">
+                <div class="datatable-pagination-buttons">
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
+                      class="fa fa-chevron-left"></i></button>
+                  <button data-mdb-ripple-color="dark"
+                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
+                      class="fa fa-chevron-right"></i></button>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
 
@@ -1087,8 +1988,44 @@
       }
       instance.show();
     }
+  } else if (location.hash === "#pills-room") {
+    const triggerEl = document.querySelector('a[href="#pills-room"]');
+    if (triggerEl) {
+      let instance = mdb.Tab.getInstance(triggerEl)
+      if (!instance) {
+        instance = new mdb.Tab(triggerEl);
+      }
+      instance.show();
+    }
+  } else if (location.hash === "#pills-equipment") {
+    const triggerEl = document.querySelector('a[href="#pills-equipment"]');
+    if (triggerEl) {
+      let instance = mdb.Tab.getInstance(triggerEl)
+      if (!instance) {
+        instance = new mdb.Tab(triggerEl);
+      }
+      instance.show();
+    }
+  } else if (location.hash === "#pills-live-in") {
+    const triggerEl = document.querySelector('a[href="#pills-live-in"]');
+    if (triggerEl) {
+      let instance = mdb.Tab.getInstance(triggerEl)
+      if (!instance) {
+        instance = new mdb.Tab(triggerEl);
+      }
+      instance.show();
+    }
   } else if (location.hash === "#pills-rule") {
     const triggerEl = document.querySelector('a[href="#pills-rule"]');
+    if (triggerEl) {
+      let instance = mdb.Tab.getInstance(triggerEl)
+      if (!instance) {
+        instance = new mdb.Tab(triggerEl);
+      }
+      instance.show();
+    }
+  } else if (location.hash === "#pills-violate-record") {
+    const triggerEl = document.querySelector('a[href="#pills-violate-record"]');
     if (triggerEl) {
       let instance = mdb.Tab.getInstance(triggerEl)
       if (!instance) {

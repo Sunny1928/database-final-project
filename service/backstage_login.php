@@ -21,6 +21,7 @@
             $_SESSION['account']=$account;
             $_SESSION['permission'] = $user_info["type"];
             $_SESSION['name'] = $user_info["name"];
+			$_SESSION['email'] = $user_info["email"];
             header("Location: ../backstage_main.php");
             die();
 

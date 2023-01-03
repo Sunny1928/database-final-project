@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +23,15 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
     ></script>
-    <title>Document</title>
+    <title>高雄大學學生宿舍管理系統</title>
 </head>
 <body>
+  <div class="background-image"></div>
   <section class="d-flex justify-content-center align-items-center" style="height: 100vh;">
   <div style="width: 26rem;" class="bg-white border rounded-5 p-4">
-    <h1>Back Stage</h1>
+    <div class="d-flex justify-content-center m-4">
+      <img src="./image/nuk.png">
+    </div>  
     <!--navs -->
     <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
       <li class="nav-item" role="presentation">
@@ -38,7 +43,7 @@
           role="tab"
           aria-controls="pills-login"
           aria-selected="true"
-          >Login</a>
+          >後台管理 登入</a>
       </li>
     </ul>
     <!-- content -->
@@ -51,17 +56,21 @@
         <form action="./service/backstage_login.php" method="post">
           <div class="form-outline mb-4">
             <input required name="account" type="text" id="loginAccount" class="form-control" />
-            <label class="form-label" for="loginAccount">Account</label>
+            <label class="form-label" for="loginAccount">帳號</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
           </div>
     
           <div class="form-outline mb-4">
             <input required name="password" type="password" id="loginPassword" class="form-control" />
-            <label class="form-label" for="loginPassword">Password</label>
+            <label class="form-label" for="loginPassword">密碼</label>
             <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
           </div>
-
-          <button type="submit" value="Login" class="btn btn-primary btn-block mb-4">Sign in</button>
+          <?php
+            if (isset($_SESSION["permission"]) && $_SESSION["permission"] == "Error"){
+            echo "<p class='text-danger ms-1'>帳號或密碼錯誤</p>";
+            }
+          ?>
+          <button type="submit" value="Login" class="btn btn-primary btn-block mb-4">登入</button>
         </form>
       </div>
     </div>
@@ -71,22 +80,27 @@
     </section>
 </body>
 </html>
-
+<style>
+  .background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  background-image: url('./image/background.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+</style>
 <?php
-    session_start();
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "school_dormitory_db";
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    echo "Connected successfully";
-
-
+    require('./service/connect_db.php');
+    $conn = connect_db();
 
 
     $sql = "SELECT * FROM User WHERE account ='root'";
@@ -111,6 +125,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s' ,$root);
         $stmt->execute();
+        
     }
 
 ?>

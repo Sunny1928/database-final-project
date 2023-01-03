@@ -1,0 +1,138 @@
+CREATE TABLE Dormitory
+(
+  name VARCHAR(30) NOT NULL,
+  dormitory_id INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (dormitory_id)
+);
+
+CREATE TABLE Room
+(
+  num_of_people INT NOT NULL,
+  fee INT NOT NULL,
+  room_number INT NOT NULL,
+  dormitory_id INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (room_number),
+  FOREIGN KEY (dormitory_id) REFERENCES Dormitory(dormitory_id)
+);
+
+CREATE TABLE User
+(
+  name VARCHAR(15) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+  phone INT NOT NULL,
+  password CHAR(255) NOT NULL,
+  account VARCHAR(15) NOT NULL,
+  type VARCHAR(30) NOT NULL,
+  PRIMARY KEY (account)
+);
+
+CREATE TABLE Student
+(
+  academic_year INT NOT NULL,
+  student_id CHAR(8) NOT NULL,
+  major_year INT NOT NULL,
+  gender VARCHAR(7) NOT NULL,
+  account VARCHAR(15) NOT NULL,
+  PRIMARY KEY (account),
+  FOREIGN KEY (account) REFERENCES User(account)
+);
+
+CREATE TABLE Dormitory_Supervisor
+(
+  account VARCHAR(15) NOT NULL,
+  dormitory_id INT NOT NULL,
+  PRIMARY KEY (account),
+  FOREIGN KEY (account) REFERENCES User(account),
+  FOREIGN KEY (dormitory_id) REFERENCES Dormitory(dormitory_id)
+);
+
+CREATE TABLE System_Manager
+(
+  account VARCHAR(15) NOT NULL,
+  PRIMARY KEY (account),
+  FOREIGN KEY (account) REFERENCES User(account)
+);
+
+CREATE TABLE News
+(
+  content VARCHAR(1000) NOT NULL,
+  date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  news_id INT NOT NULL AUTO_INCREMENT,
+  account VARCHAR(15) NOT NULL,
+  PRIMARY KEY (news_id, account),
+  FOREIGN KEY (account) REFERENCES User(account)
+);
+
+CREATE TABLE Rule
+(
+  rule_id INT NOT NULL AUTO_INCREMENT,
+  content VARCHAR(1000) NOT NULL,
+  PRIMARY KEY (rule_id)
+);
+
+CREATE TABLE Apply_Data
+(
+  academic_year INT NOT NULL,
+  semester CHAR(2) NOT NULL,
+  apply_date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  state VARCHAR(10) NOT NULL,
+  pay_fee_or_not VARCHAR(10) NOT NULL,
+  progress VARCHAR(10) NOT NULL,
+  apply_data_id INT NOT NULL AUTO_INCREMENT,
+  student_account VARCHAR(15) NOT NULL,
+  system_manager_account VARCHAR(15) NOT NULL,
+  PRIMARY KEY (apply_data_id, student_account, system_manager_account),
+  FOREIGN KEY (student_account) REFERENCES Student(account),
+  FOREIGN KEY (system_manager_account) REFERENCES System_Manager(account)
+);
+
+CREATE TABLE live_in
+(
+  semester INT NOT NULL,
+  academic_year INT NOT NULL,
+  student_account VARCHAR(15) NOT NULL,
+  system_manager_account VARCHAR(15) NOT NULL,
+  room_number INT NOT NULL,
+  PRIMARY KEY (semester, academic_year, student_account, system_manager_account, room_number),
+  FOREIGN KEY (student_account) REFERENCES Student(account),
+  FOREIGN KEY (system_manager_account) REFERENCES System_Manager(account),
+  FOREIGN KEY (room_number) REFERENCES Room(room_number)
+);
+
+CREATE TABLE Equipment
+(
+  name VARCHAR(15) NOT NULL,
+  purchase_date DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  expired_year INT NOT NULL,
+  equipment_id INT NOT NULL AUTO_INCREMENT,
+  state VARCHAR(10) NOT NULL,
+  room_number INT NOT NULL,
+  account VARCHAR(15) NOT NULL,
+  PRIMARY KEY (equipment_id),
+  FOREIGN KEY (room_number) REFERENCES Room(room_number),
+  FOREIGN KEY (account) REFERENCES System_Manager(account)
+);
+
+CREATE TABLE Violate_Record
+(
+  date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  violate_record_id INT NOT NULL AUTO_INCREMENT,
+  point INT NOT NULL,
+  student_account VARCHAR(15) NOT NULL,
+  dormitory_supervisor_account VARCHAR(15) NOT NULL,
+  rule_id INT NOT NULL,
+  PRIMARY KEY (violate_record_id, student_account, dormitory_supervisor_account, rule_id),
+  FOREIGN KEY (student_account) REFERENCES Student(account),
+  FOREIGN KEY (dormitory_supervisor_account) REFERENCES Dormitory_Supervisor(account),
+  FOREIGN KEY (rule_id) REFERENCES Rule(rule_id)
+);
+
+CREATE TABLE Comment
+(
+  date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  content VARCHAR(1000) NOT NULL,
+  comment_id INT NOT NULL AUTO_INCREMENT,
+  account VARCHAR(15) NOT NULL,
+  PRIMARY KEY (comment_id, account),
+  FOREIGN KEY (account) REFERENCES User(account)
+);
