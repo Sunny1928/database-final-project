@@ -961,7 +961,7 @@
                                   <div class='text-center mb-3'>
                                     <div class='mb-4'>
                                       <select class='form-select' id='RuleId' name='rule_id' value='$rule_id'>";
-                                        $sql = "SELECT * FROM Rule order by rule_id";
+                                        $sql = "SELECT * FROM Rule ORDER BY rule_id";
                                         foreach ($conn->query($sql) as $row) { 
                                           if($row[rule_id] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
                                           else echo "<option value=$row[rule_id]>$row[content]</option>";
@@ -1050,7 +1050,7 @@
                         <select class="form-select" name=rule_id aria-label="規範ID" required>
                           <option value="">規範ID</option>
                           <?php
-                          $sql = "SELECT * FROM Rule order by rule_id";
+                          $sql = "SELECT * FROM Rule ORDER BY rule_id";
                           foreach ($conn->query($sql) as $row) { 
                             echo "<option value=$row[rule_id]>$row[content]</option>";
                           }?>
@@ -1240,7 +1240,7 @@
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Equipment order by room_number";
+                      $sql = "SELECT * FROM Equipment ORDER BY room_number";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 

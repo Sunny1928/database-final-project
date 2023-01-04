@@ -629,7 +629,7 @@
       </div>
 
 
-      <!-- Domitory Supervisor -->
+      <!-- Dormitory Supervisor -->
       <div class="tab-pane fade h-100" id="pills-dormitory-supervisor" role="tabpanel"
         aria-labelledby="tab-dormitory-supervisor">
 
@@ -718,9 +718,9 @@
                                     <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                   </div>
                                   <div class='mb-4'>
-                                    <select class='form-select' name='dormitory_id' aria-label='規範ID' required>
+                                    <select class='form-select' name='dormitory_id' required>
                                       <option value=''>宿舍大樓</option>";
-                                      $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                                      $sql = "SELECT * FROM Dormitory ORDER BY dormitory_id";
                                       foreach ($conn->query($sql) as $row) { 
                                         if($row[dormitory_id] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
                                         else echo "<option value=$row[dormitory_id]>$row[name]</option>";
@@ -787,7 +787,6 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="addDomitorySupervisorModalLabel">新增舍監</h5>
-
               </div>
               <div class="modal-body">
                 <form method="post" action="./service/dormitory_supervisor_add.php">
@@ -841,10 +840,10 @@
                         </div>
                       </div>
                       <div class='mb-4'>
-                        <select class="form-select" name='dormitory_id' aria-label="規範ID" required>
+                        <select class="form-select" name='dormitory_id' required>
                           <option value="">宿舍大樓</option>
                           <?php
-                          $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                          $sql = "SELECT * FROM Dormitory ORDER BY dormitory_id";
                           foreach ($conn->query($sql) as $row) { 
                             echo "<option value=$row[dormitory_id]>$row[name]</option>";
                           }?>
@@ -1102,7 +1101,7 @@
                                   <div class='mb-4'>
                                     <select class='form-select' name='dormitory_id' aria-label='規範ID' required>
                                       <option value=''>宿舍大樓</option>";
-                                      $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                                      $sql = "SELECT * FROM Dormitory ORDER BY dormitory_id";
                                       foreach ($conn->query($sql) as $row) { 
                                         if($row[dormitory_id] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
                                         else echo "<option value=$row[dormitory_id]>$row[name]</option>";
@@ -1204,7 +1203,7 @@
                         <select class="form-select" name='dormitory_id' aria-label="規範ID" required>
                           <option value="">宿舍大樓</option>
                           <?php
-                          $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                          $sql = "SELECT * FROM Dormitory ORDER BY dormitory_id";
                           foreach ($conn->query($sql) as $row) { 
                             echo "<option value=$row[dormitory_id]>$row[name]</option>";
                           }?>
@@ -1255,7 +1254,7 @@
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Equipment order by room_number";
+                      $sql = "SELECT * FROM Equipment ORDER BY room_number";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -1314,7 +1313,7 @@
                                   <div class='mb-4'>
                                     <select class='form-select' name='room_number' aria-label='規範ID' required>
                                       <option value=''>房號</option>";
-                                      $sql = "SELECT * FROM Room order by room_number";
+                                      $sql = "SELECT * FROM Room ORDER BY room_number";
                                       foreach ($conn->query($sql) as $row) { 
                                         if($row[room_number] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
                                         else echo "<option value=$row[room_number]>$row[room_number]</option>";
@@ -1420,7 +1419,7 @@
                         <select class="form-select" name='room_number' required>
                           <option value="">房號</option>
                           <?php
-                          $sql = "SELECT * FROM Room order by room_number";
+                          $sql = "SELECT * FROM Room ORDER BY room_number";
                           foreach ($conn->query($sql) as $row) { 
                             echo "<option value=$row[room_number]>$row[room_number]</option>";
                           }?>
@@ -1686,7 +1685,7 @@
                                     <div class='mb-4'>
                                       <select class='form-select' name='room_number' required>
                                         <option value=''>房號</option>";
-                                        $sql = "SELECT * FROM Room order by room_number";
+                                        $sql = "SELECT * FROM Room ORDER BY room_number";
                                         foreach ($conn->query($sql) as $row) { 
                                           if($row[room_number] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
                                           else echo "<option value=$row[room_number]>$row[room_number]</option>";
@@ -1794,7 +1793,7 @@
                         <select class="form-select" name='room_number' required>
                           <option value="">房號</option>
                           <?php
-                          $sql = "SELECT * FROM Room order by room_number";
+                          $sql = "SELECT * FROM Room ORDER BY room_number";
                           foreach ($conn->query($sql) as $row) { 
                             echo "<option value=$row[room_number]>$row[room_number]</option>";
                           }?>
@@ -1894,7 +1893,7 @@
                                     <div class='mb-4'>
                                       <select class='form-select' name='rule_id' required>
                                         <option value=''>規範</option>";
-                                        $sql = "SELECT * FROM Rule order by rule_id";
+                                        $sql = "SELECT * FROM Rule ORDER BY rule_id";
                                         foreach ($conn->query($sql) as $row) { 
                                           if($row[rule_id] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
                                           else echo "<option value=$row[rule_id]>$row[content]</option>";
@@ -1972,185 +1971,183 @@
   </main>
 
   <script>
-  document.querySelectorAll('.form-outline').forEach((formOutline) => {
-    new mdb.Input(formOutline).init();
-  });
+    document.querySelectorAll('.form-outline').forEach((formOutline) => {
+      new mdb.Input(formOutline).init();
+    });
 
-  if (location.hash === "#pills-student") {
-    const triggerEl = document.querySelector('a[href="#pills-student"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    if (location.hash === "#pills-student") {
+      const triggerEl = document.querySelector('a[href="#pills-student"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-system-manager") {
-    const triggerEl = document.querySelector('a[href="#pills-system-manager"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-system-manager") {
+      const triggerEl = document.querySelector('a[href="#pills-system-manager"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-dormitory-supervisor") {
-    const triggerEl = document.querySelector('a[href="#pills-dormitory-supervisor"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-dormitory-supervisor") {
+      const triggerEl = document.querySelector('a[href="#pills-dormitory-supervisor"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-dormitory") {
-    const triggerEl = document.querySelector('a[href="#pills-dormitory"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-dormitory") {
+      const triggerEl = document.querySelector('a[href="#pills-dormitory"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-room") {
-    const triggerEl = document.querySelector('a[href="#pills-room"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-room") {
+      const triggerEl = document.querySelector('a[href="#pills-room"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-equipment") {
-    const triggerEl = document.querySelector('a[href="#pills-equipment"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-equipment") {
+      const triggerEl = document.querySelector('a[href="#pills-equipment"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-live-in") {
-    const triggerEl = document.querySelector('a[href="#pills-live-in"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-live-in") {
+      const triggerEl = document.querySelector('a[href="#pills-live-in"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-rule") {
-    const triggerEl = document.querySelector('a[href="#pills-rule"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-rule") {
+      const triggerEl = document.querySelector('a[href="#pills-rule"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-violate-record") {
-    const triggerEl = document.querySelector('a[href="#pills-violate-record"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-violate-record") {
+      const triggerEl = document.querySelector('a[href="#pills-violate-record"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
     }
-  }
-</script>
+  </script>
 
 
-<style>
-  html,
-  body,
-  .intro {
-    height: 100%;
-  }
-
-  table td,
-  table th {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .card {
-    border-radius: .5rem;
-  }
-
-  .mask-custom {
-    background: rgba(24, 24, 16, .2);
-    border-radius: 2em;
-    backdrop-filter: blur(25px);
-    border: 2px solid rgba(255, 255, 255, 0.05);
-    background-clip: padding-box;
-    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
-  }
-
-  body {
-    background-color: #fbfbfb;
-  }
-
-  @media (min-width: 800px) {
-    main {
-      padding-left: 280px;
+  <style>
+    html,
+    body,
+    .intro {
+      height: 100%;
     }
-  }
 
-  /* Sidebar */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding: 58px 0 0;
-    /* Height of navbar */
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 280px;
-    z-index: 600;
-  }
+    table td,
+    table th {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
 
-  @media (max-width: 800px) {
+    .card {
+      border-radius: .5rem;
+    }
+
+    .mask-custom {
+      background: rgba(24, 24, 16, .2);
+      border-radius: 2em;
+      backdrop-filter: blur(25px);
+      border: 2px solid rgba(255, 255, 255, 0.05);
+      background-clip: padding-box;
+      box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    }
+
+    body {
+      background-color: #fbfbfb;
+    }
+
+    @media (min-width: 800px) {
+      main {
+        padding-left: 280px;
+      }
+    }
+
+    /* Sidebar */
     .sidebar {
-      width: 100%;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 58px 0 0;
+      /* Height of navbar */
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+      width: 280px;
+      z-index: 600;
     }
-  }
 
-  .sidebar .active {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-  }
+    @media (max-width: 800px) {
+      .sidebar {
+        width: 100%;
+      }
+    }
 
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-    /* Scrollable contents if viewport is shorter than content. */
-  }
+    .sidebar .active {
+      border-radius: 5px;
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    }
 
-  #chat2 .form-control {
-    border-color: transparent;
-  }
+    .sidebar-sticky {
+      position: relative;
+      top: 0;
+      height: calc(100vh - 48px);
+      padding-top: 0.5rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /* Scrollable contents if viewport is shorter than content. */
+    }
 
-  #chat2 .form-control:focus {
-    border-color: transparent;
-    box-shadow: inset 0px 0px 0px 1px transparent;
-  }
+    #chat2 .form-control {
+      border-color: transparent;
+    }
 
-  .divider:after,
-  .divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
-  }
-</style>
+    #chat2 .form-control:focus {
+      border-color: transparent;
+      box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+  </style>
 </body>
 
 </html>
-
-
