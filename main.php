@@ -758,7 +758,7 @@
                         <div class='d-flex flex-row justify-content-start'>
                           <img src='./image/baby.jpg' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                           <div>
-                            <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7;'>$content</p>
+                            <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7; max-width:950px;'>$content</p>
                             <p class='small ms-3 mb-2 rounded-3 text-muted'>$time[0]:$time[1]</p>
                           </div>
                         </div>
@@ -769,7 +769,7 @@
                         <div class='d-flex flex-row justify-content-start'>
                           <img src='./image/baby.jpg' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                           <div>
-                            <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7;'>$content</p>
+                            <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7; max-width:950px;'>$content</p>
                             <div class='small mb-2 text-muted d-flex'>
                               <p class='ms-1 rounded-3 text-muted'>$time[0]:$time[1]</p>
                               <p class='ms-1 rounded-3' style='width: fit-content;' data-mdb-ripple-color='light' data-mdb-toggle='modal' data-mdb-target='#updateMessageModal$comment_id'>編輯</p>
@@ -785,11 +785,15 @@
                     echo "
                       <div class='d-flex flex-row justify-content-end pt-1'>
                         <div>
-                          <p class='small p-2 me-3 mb-1 text-white rounded-3 bg-primary'>$content</p>
-                          <div class='small mb-2 text-muted d-flex'>
-                            <p class='me-1  rounded-3  d-flex justify-content-end'>$time[0]:$time[1]</p>
-                            <p class='ms-1 rounded-3' style='width: fit-content;' data-mdb-ripple-color='light' data-mdb-toggle='modal' data-mdb-target='#updateMessageModal$comment_id'>編輯</p>
-                            <p class='ms-1 rounded-3' style='width: fit-content;' data-mdb-ripple-color='light' data-mdb-toggle='modal' data-mdb-target='#deleteMessageModal$comment_id'>刪除</p>
+                          <div class='align-item-end d-flex flex-row-reverse'>
+                            <p class='small p-2 me-3 mb-1 text-white rounded-3 bg-primary' style='max-width:950px;'>$content</p>
+                          </div>
+                          <div class='align-item-end d-flex flex-row-reverse'>
+                            <div class='small mb-2 text-muted d-flex'>
+                              <p class='me-1  rounded-3  d-flex justify-content-end'>$time[0]:$time[1]</p>
+                              <p class='ms-1 rounded-3' style='width: fit-content;' data-mdb-ripple-color='light' data-mdb-toggle='modal' data-mdb-target='#updateMessageModal$comment_id'>編輯</p>
+                              <p class='ms-1 rounded-3' style='width: fit-content;' data-mdb-ripple-color='light' data-mdb-toggle='modal' data-mdb-target='#deleteMessageModal$comment_id'>刪除</p>
+                            </div>
                           </div>
                         </div>
 
@@ -893,7 +897,6 @@
                   <thead class="datatable-header">
                     <tr>
                       <th scope="col">日期</th>
-                      <th scope="col">規範ID</th>
                       <th scope="col">規範內容</th>
                       <th scope="col">學生帳號</th>
                       <th scope="col">扣點</th>
@@ -931,7 +934,6 @@
 
                           echo "<tr>" .
                             "<td> " . $date . "</td>".
-                            "<td> " . $rule_id . "</td>".
                             "<td> " . $content . "</td>".
                             "<td> " . $student_account . "</td>".
                             "<td> " . $point . "</td>".
@@ -957,10 +959,14 @@
                                 </div>
                                 <div class='modal-body'>
                                   <div class='text-center mb-3'>
-                                    <div class='form-outline mb-4'>
-                                      <input value='$rule_id' required name='rule_id' id='RuleId' class='form-control' />
-                                      <label class='form-label' for='RuleId'>規範ID</label>
-                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    <div class='mb-4'>
+                                      <select class='form-select' id='RuleId' name='rule_id' value='$rule_id'>";
+                                        $sql = "SELECT * FROM Rule order by rule_id";
+                                        foreach ($conn->query($sql) as $row) { 
+                                          if($row[rule_id] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
+                                          else echo "<option value=$row[rule_id]>$row[content]</option>";
+                                        }
+                                echo "</select>
                                     </div>
                                     <div class='form-outline mb-4'>
                                       <input value='$student_account' required name='student_account' id='studentaccount' class='form-control' />
@@ -1040,18 +1046,19 @@
                 <form method="post" action="./service/violate_record_add.php">
                   <div class="modal-body">
                     <div class='text-center mb-3'>
-                      <div class='form-outline mb-4'>
-                        <input required name='rule_id' id='RuleId' class='form-control' />
-                        <label class='form-label' for='RuleId'>規範ID</label>
-                        <div class='form-notch'>
-                          <div class='form-notch-leading' style='width: 9px;'></div>
-                          <div class='form-notch-middle' style='width: 114.4px;'></div>
-                          <div class='form-notch-trailing'></div>
-                        </div>
+                      <div class='mb-4'>
+                        <select class="form-select" name=rule_id aria-label="規範ID" required>
+                          <option value="">規範ID</option>
+                          <?php
+                          $sql = "SELECT * FROM Rule order by rule_id";
+                          foreach ($conn->query($sql) as $row) { 
+                            echo "<option value=$row[rule_id]>$row[content]</option>";
+                          }?>
+                        </select>
                       </div>
                       <div class='form-outline mb-4'>
                         <input required name='student_account' id='studentaccount' class='form-control' />
-                        <label class='form-label' for='studentaccount'>學生帳號</label>
+                        <label class='form-label' type='text' for='studentaccount'>學生帳號</label>
                         <div class='form-notch'>
                           <div class='form-notch-leading' style='width: 9px;'></div>
                           <div class='form-notch-middle' style='width: 114.4px;'></div>
@@ -1233,7 +1240,7 @@
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Equipment";
+                      $sql = "SELECT * FROM Equipment order by room_number";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 

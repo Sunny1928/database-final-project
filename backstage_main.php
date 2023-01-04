@@ -717,10 +717,15 @@
                                     <label class='form-label' for='DomitorySupervisorPhone'>電話</label>
                                     <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                   </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$dormitory_id' required type='tel' name='dormitory_id' id='DomitorySupervisorDormitoryId' class='form-control' />
-                                    <label class='form-label' for='DomitorySupervisorDormitoryId'>宿舍大樓ID</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  <div class='mb-4'>
+                                    <select class='form-select' name='dormitory_id' aria-label='規範ID' required>
+                                      <option value=''>宿舍大樓</option>";
+                                      $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                                      foreach ($conn->query($sql) as $row) { 
+                                        if($row[dormitory_id] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
+                                        else echo "<option value=$row[dormitory_id]>$row[name]</option>";
+                                      }
+                              echo "</select>
                                   </div>
                                 </div>
                               </div>
@@ -835,15 +840,15 @@
                           <div class="form-notch-trailing"></div>
                         </div>
                       </div>
-                      <div class="form-outline mb-4">
-                        <input required type="tel" name="dormitory_id" id="DomitorySupervisorDormitoryId"
-                          class="form-control" />
-                        <label class="form-label" for="DomitorySupervisorDormitoryId">宿舍大樓ID</label>
-                        <div class="form-notch">
-                          <div class="form-notch-leading" style="width: 9px;"></div>
-                          <div class="form-notch-middle" style="width: 114.4px;"></div>
-                          <div class="form-notch-trailing"></div>
-                        </div>
+                      <div class='mb-4'>
+                        <select class="form-select" name='dormitory_id' aria-label="規範ID" required>
+                          <option value="">宿舍大樓</option>
+                          <?php
+                          $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                          foreach ($conn->query($sql) as $row) { 
+                            echo "<option value=$row[dormitory_id]>$row[name]</option>";
+                          }?>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -1094,10 +1099,15 @@
                                     <label class='form-label' for='RoomNumber'>價錢</label>
                                     <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                   </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$dormitory_id' required name='dormitory_id' id='RoomId' class='form-control' />
-                                    <label class='form-label' for='RoomId'>宿舍大樓ID</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  <div class='mb-4'>
+                                    <select class='form-select' name='dormitory_id' aria-label='規範ID' required>
+                                      <option value=''>宿舍大樓</option>";
+                                      $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                                      foreach ($conn->query($sql) as $row) { 
+                                        if($row[dormitory_id] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
+                                        else echo "<option value=$row[dormitory_id]>$row[name]</option>";
+                                      }
+                              echo "</select>
                                   </div>
                                 </div>
                               </div>
@@ -1190,14 +1200,15 @@
                           <div class='form-notch-trailing'></div>
                         </div>
                       </div>
-                      <div class='form-outline mb-4'>
-                        <input required name='dormitory_id' id='RoomId' class='form-control' />
-                        <label class='form-label' for='RoomId'>宿舍大樓ID</label>
-                        <div class='form-notch'>
-                          <div class='form-notch-leading' style='width: 9px;'></div>
-                          <div class='form-notch-middle' style='width: 114.4px;'></div>
-                          <div class='form-notch-trailing'></div>
-                        </div>
+                      <div class='mb-4'>
+                        <select class="form-select" name='dormitory_id' aria-label="規範ID" required>
+                          <option value="">宿舍大樓</option>
+                          <?php
+                          $sql = "SELECT * FROM Dormitory order by dormitory_id";
+                          foreach ($conn->query($sql) as $row) { 
+                            echo "<option value=$row[dormitory_id]>$row[name]</option>";
+                          }?>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -1244,7 +1255,7 @@
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Equipment";
+                      $sql = "SELECT * FROM Equipment order by room_number";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -1300,10 +1311,15 @@
                                     <label class='form-label' for='Equipmentstate'>設備狀態</label>
                                     <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                   </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$room_number' required type='text' name='room_number' id='EquipmentNumber' class='form-control' />
-                                    <label class='form-label' for='EquipmentNumber'>房號</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                  <div class='mb-4'>
+                                    <select class='form-select' name='room_number' aria-label='規範ID' required>
+                                      <option value=''>房號</option>";
+                                      $sql = "SELECT * FROM Room order by room_number";
+                                      foreach ($conn->query($sql) as $row) { 
+                                        if($row[room_number] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
+                                        else echo "<option value=$row[room_number]>$row[room_number]</option>";
+                                      }
+                              echo "</select>
                                   </div>
                                   <input value='root' hidden name='account' />
                                   <input value='$equipment_id' hidden name='equipment_id' />
@@ -1400,14 +1416,15 @@
                           <div class='form-notch-trailing'></div>
                         </div>
                       </div>
-                      <div class='form-outline mb-4'>
-                        <input required type='text' name='room_number' id='EquipmentNumber' class='form-control' />
-                        <label class='form-label' for='EquipmentNumber'>房號</label>
-                        <div class='form-notch'>
-                          <div class='form-notch-leading' style='width: 9px;'></div>
-                          <div class='form-notch-middle' style='width: 114.4px;'></div>
-                          <div class='form-notch-trailing'></div>
-                        </div>
+                      <div class='mb-4'>
+                        <select class="form-select" name='room_number' required>
+                          <option value="">房號</option>
+                          <?php
+                          $sql = "SELECT * FROM Room order by room_number";
+                          foreach ($conn->query($sql) as $row) { 
+                            echo "<option value=$row[room_number]>$row[room_number]</option>";
+                          }?>
+                        </select>
                       </div>
                       <input value='root' hidden name='account' />
                     </div>
@@ -1666,10 +1683,15 @@
                                       <label class='form-label' for='liveinstudent_account'>學生帳號</label>
                                       <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                     </div>
-                                    <div class='form-outline mb-4'>
-                                      <input value='$room_number' required type='text' name='room_number' id='liveinroom_number' class='form-control' />
-                                      <label class='form-label' for='liveinroom_number'>房號</label>
-                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    <div class='mb-4'>
+                                      <select class='form-select' name='room_number' required>
+                                        <option value=''>房號</option>";
+                                        $sql = "SELECT * FROM Room order by room_number";
+                                        foreach ($conn->query($sql) as $row) { 
+                                          if($row[room_number] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
+                                          else echo "<option value=$row[room_number]>$row[room_number]</option>";
+                                        }
+                                echo "</select>
                                     </div>
                                     <input value='$account' hidden required name='system_manager_account' />
                                   </div>
@@ -1768,14 +1790,15 @@
                           <div class='form-notch-trailing'></div>
                         </div>
                       </div>
-                      <div class='form-outline mb-4'>
-                        <input required type='text' name='room_number' id='liveinroom_number' class='form-control' />
-                        <label class='form-label' for='liveinroom_number'>房號</label>
-                        <div class='form-notch'>
-                          <div class='form-notch-leading' style='width: 9px;'></div>
-                          <div class='form-notch-middle' style='width: 114.4px;'></div>
-                          <div class='form-notch-trailing'></div>
-                        </div>
+                      <div class='mb-4'>
+                        <select class="form-select" name='room_number' required>
+                          <option value="">房號</option>
+                          <?php
+                          $sql = "SELECT * FROM Room order by room_number";
+                          foreach ($conn->query($sql) as $row) { 
+                            echo "<option value=$row[room_number]>$row[room_number]</option>";
+                          }?>
+                        </select>
                       </div>
                       <input value='<?php echo $account?>' hidden required name='system_manager_account' />
                     </div>
@@ -1868,10 +1891,15 @@
                                 </div>
                                 <div class='modal-body'>
                                   <div class='text-center mb-3'>
-                                    <div class='form-outline mb-4'>
-                                      <input value='$rule_id' required name='rule_id' id='RuleId' class='form-control' />
-                                      <label class='form-label' for='RuleId'>規範ID</label>
-                                      <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                    <div class='mb-4'>
+                                      <select class='form-select' name='rule_id' required>
+                                        <option value=''>規範</option>";
+                                        $sql = "SELECT * FROM Rule order by rule_id";
+                                        foreach ($conn->query($sql) as $row) { 
+                                          if($row[rule_id] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
+                                          else echo "<option value=$row[rule_id]>$row[content]</option>";
+                                        }
+                                echo "</select>
                                     </div>
                                     <div class='form-outline mb-4'>
                                       <input value='$student_account' required name='student_account' id='studentaccount' class='form-control' />
