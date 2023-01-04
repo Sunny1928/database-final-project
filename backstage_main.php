@@ -722,7 +722,7 @@
                                       <option value=''>宿舍大樓</option>";
                                       $sql = "SELECT * FROM Dormitory ORDER BY dormitory_id";
                                       foreach ($conn->query($sql) as $row) { 
-                                        if($row[dormitory_id] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
+                                        if($row['dormitory_id'] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
                                         else echo "<option value=$row[dormitory_id]>$row[name]</option>";
                                       }
                               echo "</select>
@@ -1103,7 +1103,7 @@
                                       <option value=''>宿舍大樓</option>";
                                       $sql = "SELECT * FROM Dormitory ORDER BY dormitory_id";
                                       foreach ($conn->query($sql) as $row) { 
-                                        if($row[dormitory_id] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
+                                        if($row['dormitory_id'] == $dormitory_id) echo "<option value=$row[dormitory_id] selected>$row[name]</option>";
                                         else echo "<option value=$row[dormitory_id]>$row[name]</option>";
                                       }
                               echo "</select>
@@ -1687,7 +1687,7 @@
                                         <option value=''>房號</option>";
                                         $sql = "SELECT * FROM Room ORDER BY room_number";
                                         foreach ($conn->query($sql) as $row) { 
-                                          if($row[room_number] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
+                                          if($row['room_number'] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
                                           else echo "<option value=$row[room_number]>$row[room_number]</option>";
                                         }
                                 echo "</select>
@@ -1895,7 +1895,7 @@
                                         <option value=''>規範</option>";
                                         $sql = "SELECT * FROM Rule ORDER BY rule_id";
                                         foreach ($conn->query($sql) as $row) { 
-                                          if($row[rule_id] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
+                                          if($row['rule_id'] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
                                           else echo "<option value=$row[rule_id]>$row[content]</option>";
                                         }
                                 echo "</select>

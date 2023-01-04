@@ -963,7 +963,7 @@
                                       <select class='form-select' id='RuleId' name='rule_id' value='$rule_id'>";
                                         $sql = "SELECT * FROM Rule ORDER BY rule_id";
                                         foreach ($conn->query($sql) as $row) { 
-                                          if($row[rule_id] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
+                                          if($row['rule_id'] == $rule_id) echo "<option value=$row[rule_id] selected>$row[content]</option>";
                                           else echo "<option value=$row[rule_id]>$row[content]</option>";
                                         }
                                 echo "</select>
