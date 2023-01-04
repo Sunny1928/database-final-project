@@ -1315,7 +1315,7 @@
                                       <option value=''>房號</option>";
                                       $sql = "SELECT * FROM Room ORDER BY room_number";
                                       foreach ($conn->query($sql) as $row) { 
-                                        if($row[room_number] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
+                                        if($row['room_number'] == $room_number) echo "<option value=$row[room_number] selected>$row[room_number]</option>";
                                         else echo "<option value=$row[room_number]>$row[room_number]</option>";
                                       }
                               echo "</select>
