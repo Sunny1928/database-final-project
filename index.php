@@ -131,12 +131,12 @@
           <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 114.4px;"></div><div class="form-notch-trailing"></div></div>
         </div>
 
-        <div class="form-check form-check-inline mb-4">
-          <input name="gender" value="male" class="form-check-input" type="radio" id="male"/>
+        <div class="form-check form-check-inline mb-4 required">
+          <input name="gender" value="male" required class="form-check-input" type="radio" id="male"/>
           <label class="form-check-label" for="male">男</label>
         </div>
         <div class="form-check form-check-inline mb-4">
-          <input name="gender" value="female" class="form-check-input" type="radio" id="female"/>
+          <input name="gender" value="female" required class="form-check-input" type="radio" id="female"/>
           <label class="form-check-label" for="female">女</label>
         </div>
 

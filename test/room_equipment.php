@@ -23,7 +23,7 @@
     if($permission == 'student'){
 
         //會有不同年的
-        $sql = $sql . "WHERE student_account =  ? ORDER BY academic_year DESC, semester DESC ";
+        $sql = "SELECT * FROM Room JOIN live_in USING(room_number) WHERE student_account =  ? ORDER BY academic_year DESC, semester DESC ";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $account);
 
@@ -74,7 +74,7 @@
 
     if ($permission == 'student') {
 
-        $sql = $sql . "WHERE room_number =  ?";
+        $sql = "SELECT * FROM Equipment  WHERE room_number =  ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $room);
     } 

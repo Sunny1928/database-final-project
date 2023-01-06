@@ -654,13 +654,13 @@
                       <th scope="col">名字</th>
                       <th scope="col">Email</th>
                       <th scope="col">電話</th>
-                      <th scope="col">宿舍大樓ID</th>
+                      <th scope="col">宿舍大樓</th>
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Dormitory_Supervisor JOIN User ON User.account = Dormitory_Supervisor.account";
+                      $sql = "SELECT * FROM Dormitory_Supervisor JOIN User ON User.account = Dormitory_Supervisor.account JOIN Dormitory ON Dormitory.dormitory_id = Dormitory_Supervisor.dormitory_id";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -672,13 +672,14 @@
                           $email = $userinfo['email'];
                           $phone = $userinfo['phone'];
                           $dormitory_id = $userinfo['dormitory_id'];
+                          $dormitory_name = $userinfo['name'];
                           
                           echo "<tr>" .
                             "<td> ". $account ."</td> ".
                             "<td> " . $name . "</td>".
                             "<td> " . $email . "</td>".
                             "<td> " . $phone . "</td>".
-                            "<td> " . $dormitory_id . "</td>".
+                            "<td> " . $dormitory_name . "</td>".
                             "<td>
                               <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateDomitorySupervisorModal$account'><i class='fa fa-pencil'></i></button>
                               <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteDomitorySupervisorModal$account'><i class='fa fa-trash'></i></button>
@@ -1247,15 +1248,18 @@
                       <th scope="col">購買日期</th>
                       <th scope="col">使用年限</th>
                       <th scope="col">設備狀況</th>
+                      <th scope="col">宿舍大樓</th>
                       <th scope="col">宿舍房間</th>
-                      <th scope="col">宿舍設備ID</th>
                       <th scope="col">登記帳號</th>
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Equipment ORDER BY room_number";
+                      $sql = "SELECT *, Dormitory.name as 'dormitory_name' FROM Equipment 
+                      JOIN ROOM ON Equipment.room_number = Room.room_number 
+                      JOIN Dormitory ON Dormitory.dormitory_id = Room.dormitory_id 
+                      ORDER BY Dormitory.dormitory_id, Room.room_number";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -1268,6 +1272,7 @@
                           $equipment_id = $userinfo['equipment_id'];
                           $state = $userinfo['state'];
                           $room_number = $userinfo['room_number'];
+                          $dormitory_name = $userinfo['dormitory_name'];
                           $account = $userinfo['account'];
                           
                           echo "<tr>" .
@@ -1275,8 +1280,8 @@
                             "<td> " . $purchase_date . "</td>".
                             "<td> " . $expired_year . "</td>".
                             "<td> " . $state . "</td>".
+                            "<td> " . $dormitory_name . "</td>".
                             "<td> " . $room_number . "</td>".
-                            "<td> " . $equipment_id . "</td>".
                             "<td> " . $account . "</td>".
                             "<td>
                               <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateEquipmentModal$equipment_id'><i class='fa fa-pencil'></i></button>
@@ -1461,7 +1466,6 @@
                   <thead class="datatable-header">
                     <tr>
                       <th scope="col">內容</th>
-                      <th scope="col">規範ID</th>
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
@@ -1479,7 +1483,6 @@
                           
                           echo "<tr>" .
                             "<td> " . $content . "</td>".
-                            "<td> " . $rule_id . "</td>".
                             "<td>
                               <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateRuleModal$rule_id'><i class='fa fa-pencil'></i></button>
                               <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteRuleModal$rule_id'><i class='fa fa-trash'></i></button>
@@ -1503,11 +1506,7 @@
                                     <label class='form-label' for='RuleContent'>內容</label>
                                     <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                                   </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$rule_id' readonly name='rule_id' id='RuleId' class='form-control' />
-                                    <label class='form-label' for='RuleId'>內容</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                                  </div>
+                                  <input hidden value='$rule_id' readonly name='rule_id' id='RuleId' class='form-control' />
                                 </div>
                               </div>
                               <div class='modal-footer'>

@@ -1106,20 +1106,21 @@ if (!isset($_SESSION["permission"])){
         </div>
 
         <!-- Dormitory Table -->
-        <div class="card m-2">
-          <section class="border p-4">
+        <?php 
+        if($_SESSION['permission'] == 'system_manager'){
+          echo "
+          <div class='card m-2'>
+          <section class='border p-4'>
             <h5 class='m-2'>宿舍大樓</h5>
-            <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
-              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
-                <table class="table datatable-table">
-                  <thead class="datatable-header">
+            <div id='datatable-custom' data-mdb-hover='true' class='datatable datatable-hover'>
+              <div class='datatable-inner table-responsive ps' style='overflow: auto; position: relative;'>
+                <table class='table datatable-table'>
+                  <thead class='datatable-header'>
                     <tr>
-                      <th scope="col">名字</th>
-                      <th scope="col">宿舍大樓ID</th>
+                      <th scope='col'>名字</th>
                     </tr>
                   </thead>
-                  <tbody class="datatable-body">
-                    <?php
+                  <tbody class='datatable-body'>";
                       $sql = "SELECT * FROM Dormitory";
                       $result = $conn->query($sql);
 
@@ -1133,96 +1134,123 @@ if (!isset($_SESSION["permission"])){
                           echo "
                               <tr>
                                 <td> $name </td>
-                                <td> $dormitory_id </td>
                               </tr>
                             ";
                           
                         }
                       }
-                    ?>
-                  </tbody>
+                  echo "</tbody>
                 </table>
-                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                  <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                <div class='ps__rail-x' style='left: 0px; bottom: 0px;'>
+                  <div class='ps__thumb-x' tabindex='0' style='left: 0px; width: 0px;'></div>
                 </div>
-                <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                  <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                <div class='ps__rail-y' style='top: 0px; right: 0px;'>
+                  <div class='ps__thumb-y' tabindex='0' style='top: 0px; height: 0px;'></div>
                 </div>
               </div>
-              <div class="datatable-pagination d-flex justify-content-end">
-                <div class="datatable-pagination-buttons">
-                  <button data-mdb-ripple-color="dark"
-                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
-                      class="fa fa-chevron-left"></i></button>
-                  <button data-mdb-ripple-color="dark"
-                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
-                      class="fa fa-chevron-right"></i></button>
+              <div class='datatable-pagination d-flex justify-content-end'>
+                <div class='datatable-pagination-buttons'>
+                  <button data-mdb-ripple-color='dark'
+                    class='btn btn-link datatable-pagination-button datatable-pagination-left'><i
+                      class='fa fa-chevron-left'></i></button>
+                  <button data-mdb-ripple-color='dark'
+                    class='btn btn-link datatable-pagination-button datatable-pagination-right'><i
+                      class='fa fa-chevron-right'></i></button>
                 </div>
               </div>
             </div>
           </section>
         </div>
+          ";
+
+        }
+        ?>
+        
 
         <!-- Room Table -->
-        <div class="card m-2">
-          <section class="border p-4">
-            <h5 class='m-2'>宿舍房間</h5>
-            <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
-              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
-                <table class="table datatable-table">
-                  <thead class="datatable-header">
-                    <tr>
-                      <th scope="col">房號</th>
-                      <th scope="col">住宿人數</th>
-                      <th scope="col">價錢</th>
-                      <th scope="col">宿舍大樓ID</th>
-                    </tr>
-                  </thead>
-                  <tbody class="datatable-body">
-                    <?php
-                      $sql = "SELECT * FROM Room";
-                      $result = $conn->query($sql);
+        <?php 
+          if($_SESSION['permission'] == 'system_manager' || $_SESSION['permission'] == 'dormitory_supervisor'){
+            echo "<div class='card m-2'>
+              <section class='border p-4'>
+                <h5 class='m-2'>宿舍房間</h5>
+                <div id='datatable-custom' data-mdb-hover='true' class='datatable datatable-hover'>
+                  <div class='datatable-inner table-responsive ps' style='overflow: auto; position: relative;'>
+                    <table class='table datatable-table'>
+                      <thead class='datatable-header'>
+                        <tr>
+                          <th scope='col'>房號</th>
+                          <th scope='col'>住宿人數</th>
+                          <th scope='col'>價錢</th>";
+                          if($_SESSION['permission'] == 'system_manager'){
+                          echo "<th scope='col'>宿舍大樓</th>";
+                          }
+                        echo "</tr>
+                      </thead>
+                      <tbody class='datatable-body'>";
+                      if($_SESSION['permission'] == 'system_manager'){
+                          $sql = "SELECT * FROM Room JOIN Dormitory ON Dormitory.dormitory_id = Room.dormitory_id";
+                      } else{
+                        $sql2 = "SELECT dormitory_id FROM Dormitory_Supervisor WHERE account = ?";
+                        $stmt = $conn->prepare($sql2);
+                        $stmt->bind_param("s", $_SESSION['account']);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $dormitory_id = mysqli_fetch_row($result)[0];
+                        mysqli_stmt_close($stmt);
 
-                      if (mysqli_num_rows($result) > 0) 
-                      {
-                        while ($userinfo = mysqli_fetch_assoc($result)) 
-                        {
-                          $room_number = $userinfo['room_number'];
-                          $num_of_people = $userinfo['num_of_people'];
-                          $fee = $userinfo['fee'];
-                          $dormitory_id = $userinfo['dormitory_id'];
-                          
-                          echo "<tr>" .
-                            "<td> " . $room_number . "</td>".
-                            "<td> " . $num_of_people . "</td>".
-                            "<td> " . $fee . "</td>".
-                            "<td> " . $dormitory_id . "</td>".
-                            "</tr>";
-                        }
+                        $sql = "SELECT * FROM Room JOIN live_in USING(room_number) WHERE dormitory_id =  ? ORDER BY academic_year DESC, semester DESC";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("s", $dormitory_id);
+                        $sql = "SELECT * FROM Room  WHERE dormitory_id = Room.dormitory_id";
                       }
-                    ?>
-                  </tbody>
-                </table>
-                <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
-                  <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                          $result = $conn->query($sql);
+
+                          if (mysqli_num_rows($result) > 0) 
+                          {
+                            while ($userinfo = mysqli_fetch_assoc($result)) 
+                            {
+                              $room_number = $userinfo['room_number'];
+                              $num_of_people = $userinfo['num_of_people'];
+                              $fee = $userinfo['fee'];
+                              $dormitory_id = $userinfo['dormitory_id'];
+                              if($_SESSION['permission'] == 'system_manager'){
+                                $dormitory_name = $userinfo['name'];
+                              }
+                              echo "<tr>" .
+                                "<td> " . $room_number . "</td>".
+                                "<td> " . $num_of_people . "</td>".
+                                "<td> " . $fee . "</td>";
+                              if($_SESSION['permission'] == 'system_manager'){
+                                echo "<td> " . $dormitory_name . "</td>";
+                                }
+                              echo  "</tr>";
+                            }
+                          }
+                      echo "</tbody>
+                    </table>
+                    <div class='ps__rail-x' style='left: 0px; bottom: 0px;'>
+                      <div class='ps__thumb-x' tabindex='0' style='left: 0px; width: 0px;'></div>
+                    </div>
+                    <div class='ps__rail-y' style='top: 0px; right: 0px;'>
+                      <div class='ps__thumb-y' tabindex='0' style='top: 0px; height: 0px;'></div>
+                    </div>
+                  </div>
+                  <div class='datatable-pagination d-flex justify-content-end'>
+                    <div class='datatable-pagination-buttons'>
+                      <button data-mdb-ripple-color='dark'
+                        class='btn btn-link datatable-pagination-button datatable-pagination-left'><i
+                          class='fa fa-chevron-left'></i></button>
+                      <button data-mdb-ripple-color='dark'
+                        class='btn btn-link datatable-pagination-button datatable-pagination-right'><i
+                          class='fa fa-chevron-right'></i></button>
+                    </div>
+                  </div>
                 </div>
-                <div class="ps__rail-y" style="top: 0px; right: 0px;">
-                  <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-                </div>
-              </div>
-              <div class="datatable-pagination d-flex justify-content-end">
-                <div class="datatable-pagination-buttons">
-                  <button data-mdb-ripple-color="dark"
-                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
-                      class="fa fa-chevron-left"></i></button>
-                  <button data-mdb-ripple-color="dark"
-                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
-                      class="fa fa-chevron-right"></i></button>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+              </section>
+            </div>";
+          }
+        ?>
+
 
         <!-- Equipment Table -->
         <div class="card m-2">
@@ -1237,9 +1265,11 @@ if (!isset($_SESSION["permission"])){
                       <th scope="col">購買日期</th>
                       <th scope="col">使用年限</th>
                       <th scope="col">設備狀況</th>
+                      <?php 
+                      if($_SESSION['permission'] == 'system_manager'){
+                        echo "<th scope='col'>宿舍大樓</th>";
+                      }?>
                       <th scope="col">宿舍房間</th>
-                      <th scope="col">宿舍設備ID</th>
-                      <th scope="col">登記帳號</th>
                       <?php
                         if($_SESSION['permission'] == 'system_manager'){
                           echo "<th scope='col'>操作</th>";
@@ -1249,7 +1279,33 @@ if (!isset($_SESSION["permission"])){
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Equipment ORDER BY room_number";
+                    if($_SESSION['permission'] == 'system_manager'){
+                      $sql = "SELECT *, Dormitory.name as 'dormitory_name' FROM Equipment 
+                      JOIN ROOM ON Equipment.room_number = Room.room_number 
+                      JOIN Dormitory ON Dormitory.dormitory_id = Room.dormitory_id 
+                      ORDER BY Dormitory.dormitory_id, Room.room_number";
+                    }else if($_SESSION['permission'] == 'dormitory_supervisor'){
+                      $sql2 = "SELECT dormitory_id FROM Dormitory_Supervisor WHERE account = ?";
+                      $stmt = $conn->prepare($sql2);
+                      $stmt->bind_param("s", $_SESSION['account']);
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      $dormitory_id = mysqli_fetch_row($result)[0];
+                      mysqli_stmt_close($stmt);
+                      
+                      $sql = "SELECT * FROM Equipment JOIN Room USING(room_number) WHERE dormitory_id =  $dormitory_id";
+                    }else{
+                      //會有不同年的
+                      $sql = "SELECT * FROM Room JOIN live_in USING(room_number) WHERE student_account =  ? ORDER BY academic_year DESC, semester DESC LIMIT 1";
+                      $stmt2 = $conn->prepare($sql);
+                      $stmt2->bind_param("s", $_SESSION['account']);
+                      $stmt2->execute();
+                      $result = $stmt2->get_result();
+                      $room = mysqli_fetch_row($result)[0];
+                      mysqli_stmt_close($stmt2);
+
+                      $sql = "SELECT * FROM Equipment  WHERE room_number =  $room";
+                    }
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -1262,16 +1318,20 @@ if (!isset($_SESSION["permission"])){
                           $equipment_id = $userinfo['equipment_id'];
                           $state = $userinfo['state'];
                           $room_number = $userinfo['room_number'];
+                          if($_SESSION['permission'] == 'system_manager'){
+                            $dormitory_name = $userinfo['dormitory_name'];
+                          }
                           $account = $_SESSION['account'];
                           
                           echo "<tr>" .
                             "<td> " . $name . "</td>".
                             "<td> " . $purchase_date . "</td>".
                             "<td> " . $expired_year . "</td>".
-                            "<td> " . $state . "</td>".
-                            "<td> " . $room_number . "</td>".
-                            "<td> " . $equipment_id . "</td>".
-                            "<td> " . $account . "</td>";
+                            "<td> " . $state . "</td>";
+                          if($_SESSION['permission'] == 'system_manager'){
+                            echo "<td> " . $dormitory_name . "</td>";
+                          }
+                          echo "<td> " . $room_number . "</td>";
                           
                           if($_SESSION['permission'] == 'system_manager'){
                             echo "
@@ -1351,6 +1411,7 @@ if (!isset($_SESSION["permission"])){
             </div>
           </section>
         </div>
+        
 
 
       </div>
