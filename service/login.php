@@ -19,6 +19,18 @@
 		if (password_verify($password, $user_info["password"])) {
 			$_SESSION['account']=$account;
 			$_SESSION['permission'] = $user_info["type"];
+			if($_SESSION['permission'] == 'student'){
+				if($_SESSION['gender'] == 'male'){
+					$_SESSION['icon'] = "./image/boy.png";
+				}else{
+					$_SESSION['icon'] = "./image/girl.png";
+				}
+			} else if($_SESSION['permission'] == 'system_manager'){
+				$_SESSION['icon'] = "./image/man.png";
+			} else if($_SESSION['permission'] == 'dormitory_supervisor'){
+				$_SESSION['icon'] = "./image/woman.png";
+			}
+
 			$_SESSION['name'] = $user_info["name"];
 			$_SESSION['email'] = $user_info["email"];
 			header("Location: ../main.php");	

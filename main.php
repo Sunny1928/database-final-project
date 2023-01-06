@@ -24,7 +24,8 @@
         <div class="mt-4">
           <div id="header-content" class="w-auto">
             <div class="d-flex justify-content-center">
-              <img src="./image/baby.jpg" alt="avatar" class="rounded-circle img-fluid mb-3 m-auto" style="max-width: 100px;">
+              <img src=<?php echo $_SESSION['icon']?> 
+                alt="avatar" class="rounded-circle img-fluid mb-3 m-auto" style="max-width: 100px;">
             </div>
             <h4 class="text-center">
               <span style="white-space: nowrap;"><?php echo $_SESSION['name']?></span>
@@ -120,13 +121,25 @@
                                     <p>對下學期的住宿提出申請</p>
                                 </div>
                             </li>
-                            <li class='c-stepper__item_a'>
+                            <li class=";
+                            if($state == '審核中'){
+                              echo 'c-stepper__item_a';
+                            } else{
+                              echo 'c-stepper__item';
+                            }
+                            echo ">
                                 <div class='c-stepper__content'>
                                     <h3 class='c-stepper__title'>步驟二：審核</h3>
                                     <p>會依照你的違規紀錄，抽宿舍，若你扣分的幾點越多，越難抽到</p>
                                 </div>
                             </li>
-                            <li class='c-stepper__item'>
+                            <li class=";
+                            if($state != '審核中'){
+                              echo 'c-stepper__item_a';
+                            } else{
+                              echo 'c-stepper__item';
+                            }
+                            echo ">
                                 <div class='c-stepper__content'>
                                     <h3 class='c-stepper__title'>步驟三：分發</h3>
                                     <p>你會收到核可通知，這時你再決定是否入住，若是請在期限內繳費</p>
@@ -140,30 +153,20 @@
                   <div class='col-md-6 '>
                     <div class='card h-100'>
                       <div class='card-body'>
-                        <h4 class='card-title mb-3'>宿舍申請</h4>
-                        <div class='m-2'>
-                          <form method='post' action='./service/apply_data_update.php'>
-                            <p class='fs-5 mb-2'><strong>申請日期:</strong><span class='font-monospace'> $apply_date</span></p>
-                            <p class='fs-5 mb-2'><strong>申請狀態:</strong><span class='font-monospace'> $state</span></p>
-                            <p class='fs-5 mb-3'><strong>付款:</strong><span class='font-monospace'> $pay_fee_or_not</span></p>
-                            <div class='form-outline mb-4'>
-                              <input name='academic_year' value='$academic_year' required type='number' class='form-control' id='academic_yeard' rows='4'
-                                required>
-                              <label class='form-label' for='academic_yeard'>學年</label>
-                              <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                            </div>
-                            <div class='form-outline mb-4'>
-                              <input name='semester' value='$semester' required type='text' class='form-control' id='semesterd' rows='4'
-                                required>
-                              <label class='form-label' for='semesterd'>學期</label>
-                              <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                            </div>
-                            
-                            <div class='d-flex'>
-                              <button type='button' class='btn btn-secondary btn-block' onclick=\"location.href='./service/apply_data_delete.php?apply_data_id=$apply_data_id'\">刪除</button>
-                            </div>
-                          </form>
-                        </div>
+                        <h4 class='card-title mb-4'>宿舍申請</h4>
+                        
+                        <form method='post' action='./service/apply_data_update.php'>
+                          <div class='p-3 mb-2' style='border-radius:10px; background:#eee'>
+                            <p class='fs-5 my-2'><strong>申請日期:</strong><span class='font-monospace'> $apply_date</span></p>
+                            <p class='fs-5 my-2'><strong>申請狀態:</strong><span class='font-monospace'> $state</span></p>
+                            <p class='fs-5 my-2'><strong>付款:</strong><span class='font-monospace'> $pay_fee_or_not</span></p>
+                            <p class='fs-5 my-2'><strong>學年:</strong><span class='font-monospace'> $academic_year</span></p>
+                            <p class='fs-5 '><strong>學期:</strong><span class='font-monospace'> $semester</span></p>
+                          </div>
+                          <div class='d-flex'>
+                            <button type='button' class='btn btn-secondary btn-block' onclick=\"location.href='./service/apply_data_delete.php?apply_data_id=$apply_data_id'\">刪除</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -250,7 +253,7 @@
                             <th scope='col'>學期</th>
                             <th scope='col'>日期</th>
                             <th scope='col'>狀態</th>
-                            <th scope='col'>付款</th>
+                            <th scope='col'>付款與否</th>
                             <th scope='col'>學生帳號</th>
                             <th scope='col'>操作</th>
                           </tr>
@@ -288,7 +291,7 @@
                   <div class='modal-content'>
                       <input value='$apply_data_id' hidden name='apply_data_id'  />
                       <div class='modal-header'>
-                        <h5 class='modal-title' id='updateRoomModalLabel'>修改宿舍房間</h5>
+                        <h5 class='modal-title' id='updateRoomModalLabel'>修改宿舍申請資料</h5>
                         <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
                       </div>
                       <div class='modal-body'>
@@ -308,16 +311,17 @@
                             <label class='form-label' for='applyDate'>申請日期</label>
                             <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
                           </div>
-                          <div class='form-outline mb-4'>
-                            <input value='$state' required name='state' id='stated' class='form-control' />
-                            <label class='form-label' for='stated'>申請狀態</label>
-                            <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                          </div>
-                          <div class='form-outline mb-4'>
-                            <input value='$pay_fee_or_not' required name='pay_fee_or_not' id='pay_fee_or_not' class='form-control' />
-                            <label class='form-label' for='pay_fee_or_not'>付款</label>
-                            <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                          </div>
+                          <select class='form-select mb-4' name=state required>
+                            <option value=''>狀態</option>
+                            <option value='審核中'"; if($state == '審核中') echo "selected"; echo">審核中</option>
+                            <option value='審核失敗'"; if($state == '審核失敗') echo "selected"; echo">審核失敗</option>
+                            <option value='審核成功'"; if($state == '審核成功') echo "selected"; echo">審核成功</option>
+                          </select>
+                          <select class='form-select mb-4' name=pay_fee_or_not required>
+                            <option value=''>付款與否</option>
+                            <option value='未付款'"; if($pay_fee_or_not == '未付款') echo "selected"; echo">未付款</option>
+                            <option value='已付款'"; if($pay_fee_or_not == '已付款') echo "selected"; echo">已付款</option>
+                          </select>
                           <div class='form-outline mb-4'>
                             <input readonly value='$student_account' required name='student_account' id='student_account' class='form-control' />
                             <label class='form-label' for='student_account'>學生帳號</label>
@@ -340,9 +344,9 @@
                   <div class='modal-dialog modal-dialog-centered'>
                     <div class='modal-content'>
                       <div class='modal-header'>
-                        <h5 class='modal-title' id='deleteRoomModalLabel'>刪除宿舍房間</h5>
+                        <h5 class='modal-title' id='deleteRoomModalLabel'>刪除宿舍申請資料</h5>
                       </div>
-                      <div class='modal-body'>您確認要刪除宿舍房間嗎？</div>
+                      <div class='modal-body'>您確認要刪除宿舍申請資料嗎？</div>
                       <div class='modal-footer'>
                         <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
                         <button type='button' class='btn btn-primary' onclick='location.href=\"./service/apply_data_delete.php?apply_data_id=$apply_data_id\"'>確認</button>

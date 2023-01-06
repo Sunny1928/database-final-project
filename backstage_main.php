@@ -32,7 +32,7 @@
         <div class="mt-4">
           <div id="header-content" class="w-auto">
             <div class="d-flex justify-content-center">
-              <img src="./image/baby.jpg" alt="avatar" class="rounded-circle img-fluid mb-3 m-auto"
+              <img src="./image/man.png" alt="avatar" class="rounded-circle img-fluid mb-3 m-auto"
                 style="max-width: 100px;">
             </div>
             <h4 class="text-center">
@@ -884,7 +884,7 @@
                   <thead class="datatable-header">
                     <tr>
                       <th scope="col">名字</th>
-                      <th scope="col">宿舍大樓ID</th>
+                      <!-- <th scope="col">宿舍大樓ID</th> -->
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
@@ -902,7 +902,7 @@
                           
                           echo "<tr>" .
                             "<td> " . $name . "</td>".
-                            "<td> " . $dormitory_id . "</td>".
+                            // "<td> " . $dormitory_id . "</td>".
                             "<td>
                               <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateDomitoryModal$dormitory_id'><i class='fa fa-pencil'></i></button>
                               <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteDomitoryModal$dormitory_id'><i class='fa fa-trash'></i></button>
@@ -1042,13 +1042,13 @@
                       <th scope="col">房號</th>
                       <th scope="col">住宿人數</th>
                       <th scope="col">價錢</th>
-                      <th scope="col">宿舍大樓ID</th>
+                      <th scope="col">宿舍大樓</th>
                       <th scope="col">操作</th>
                     </tr>
                   </thead>
                   <tbody class="datatable-body">
                     <?php
-                      $sql = "SELECT * FROM Room";
+                      $sql = "SELECT * FROM Room JOIN Dormitory ON Dormitory.dormitory_id = Room.dormitory_id";
                       $result = $conn->query($sql);
 
                       if (mysqli_num_rows($result) > 0) 
@@ -1059,12 +1059,13 @@
                           $num_of_people = $userinfo['num_of_people'];
                           $fee = $userinfo['fee'];
                           $dormitory_id = $userinfo['dormitory_id'];
+                          $dormitory_name = $userinfo['name'];
                           
                           echo "<tr>" .
                             "<td> " . $room_number . "</td>".
                             "<td> " . $num_of_people . "</td>".
                             "<td> " . $fee . "</td>".
-                            "<td> " . $dormitory_id . "</td>".
+                            "<td> " . $dormitory_name . "</td>".
                             "<td>
                               <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateRoomModal$room_number'><i class='fa fa-pencil'></i></button>
                               <button class='message-btn btn ms-2 btn-primary btn-floating btn-sm' data-mdb-toggle='modal' data-mdb-target='#deleteRoomModal$room_number'><i class='fa fa-trash'></i></button>

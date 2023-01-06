@@ -1,4 +1,3 @@
-<!-- 更新訊息-功能 -->
 <?php
     require_once('./connect_db.php');
     $conn = connect_db();
