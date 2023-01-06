@@ -765,7 +765,7 @@ if (!isset($_SESSION["permission"])){
                       if ($_SESSION["permission"]=="student"){
                         echo "
                         <div class='d-flex flex-row justify-content-start'>
-                          <img src='./image/baby.jpg' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
+                          <img src=";echo $_SESSION['icon']; echo"'alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                           <div>
                             <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7; max-width:950px;'>$content</p>
                             <p class='small ms-3 mb-2 rounded-3 text-muted'>$time[0]:$time[1]</p>
@@ -776,7 +776,7 @@ if (!isset($_SESSION["permission"])){
                       else {
                         echo "
                         <div class='d-flex flex-row justify-content-start'>
-                          <img src='./image/baby.jpg' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
+                          <img src='";echo $_SESSION['icon']; echo"'alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                           <div>
                             <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7; max-width:950px;'>$content</p>
                             <div class='small mb-2 text-muted d-flex'>
@@ -806,7 +806,7 @@ if (!isset($_SESSION["permission"])){
                           </div>
                         </div>
 
-                        <img src='./image/baby.jpg' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
+                        <img src='";echo $_SESSION['icon']; echo"'alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                       </div>
                       ";
                   }
@@ -869,7 +869,7 @@ if (!isset($_SESSION["permission"])){
             <!-- Add -->
             <form method="post" id="add_message" action="./service/comment_add.php">
               <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                <img src="./image/baby.jpg" alt="avatar 3" style="width: 40px; height: 100%; border-radius: 100%;">
+                <img src=<?php echo $_SESSION['icon'];?> alt="avatar 3" style="width: 40px; height: 100%; border-radius: 100%;">
                 <input name="content" required type="text" class="form-control form-control-lg"
                   id="exampleFormControlInput1" placeholder="Type message">
                 <a class="ms-3" onclick="document.getElementById('add_message').submit();"><i
