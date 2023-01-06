@@ -15,11 +15,11 @@
 		/*
 		 * new student
 		 */
-		echo $_POST['academic_year'].' ';
-		echo $_POST['student_id'].' ';
-		echo $_POST['major_year'].' ';
-		echo $_POST['gender'].' ';
-		echo $_POST['account'].' ';
+		// echo $_POST['academic_year'].' ';
+		// echo $_POST['student_id'].' ';
+		// echo $_POST['major_year'].' ';
+		// echo $_POST['gender'].' ';
+		// echo $_POST['account'].' ';
 
 		
 
@@ -28,23 +28,11 @@
 		$stmt->bind_param('isiss' ,$_POST['academic_year'] , $_POST['student_id'] , $_POST['major_year'] , $_POST['gender'] , $_POST['account']);
 		$stmt->execute();	
 	
-		// header("Location: ../index.php" , 301);
-        // die();
+		header("Location: ../index.php" , 301);
+        die();
 	}
 ?>
 
 
-<?php
-		
 
-		
-		
-		/*
-		 * new student
-		 */
-		
-		
-		header("Locaition: ../login_view.php" , 301);
-        die();
-?>
 

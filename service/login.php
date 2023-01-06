@@ -20,11 +20,17 @@
 			$_SESSION['account']=$account;
 			$_SESSION['permission'] = $user_info["type"];
 			if($_SESSION['permission'] == 'student'){
-				if($user_info['gender'] == 'male'){
-					$_SESSION['icon'] = "./image/boy.png";
-				}else{
-					$_SESSION['icon'] = "./image/girl.png";
+				$sql = "SELECT gender FROM Student WHERE account ='$account'";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0){
+					$info =  $result->fetch_assoc();
+					if($info['gender'] == 'male'){
+						$_SESSION['icon'] = "./image/boy.png";
+					}else{
+						$_SESSION['icon'] = "./image/girl.png";
+					}
 				}
+				
 			} else if($_SESSION['permission'] == 'system_manager'){
 				$_SESSION['icon'] = "./image/man.png";
 			} else if($_SESSION['permission'] == 'dormitory_supervisor'){
