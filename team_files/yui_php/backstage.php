@@ -1,8 +1,5 @@
 <?php
 	session_start();
-#	echo 	isset($_SESSION["permission"]);
-#	echo  $_SESSION["permission"];
-#	echo  $_SESSION["account"];
 	if (!isset($_SESSION["permission"]) || $_SESSION['permission']!="system_manager" || $_SESSION["account"] != "root"){
 					
 		Header("Location: ./backstage_login.php" , 301);

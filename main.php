@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php session_start();
+if (!isset($_SESSION["permission"]) || $_SESSION['permission']!="system_manager" || $_SESSION["account"] != "root"){
+					
+  Header("Location: ./index.php" , 301);
+  die();
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
