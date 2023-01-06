@@ -1,5 +1,5 @@
 <?php session_start();
-if (!isset($_SESSION["permission"]) || $_SESSION['permission']!="system_manager" || $_SESSION["account"] != "root"){
+if (!isset($_SESSION["permission"])){
 					
   Header("Location: ./index.php" , 301);
   die();

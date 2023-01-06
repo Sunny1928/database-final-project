@@ -20,7 +20,7 @@
 			$_SESSION['account']=$account;
 			$_SESSION['permission'] = $user_info["type"];
 			if($_SESSION['permission'] == 'student'){
-				if($_SESSION['gender'] == 'male'){
+				if($user_info['gender'] == 'male'){
 					$_SESSION['icon'] = "./image/boy.png";
 				}else{
 					$_SESSION['icon'] = "./image/girl.png";
