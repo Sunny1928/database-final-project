@@ -1281,7 +1281,7 @@ if (!isset($_SESSION["permission"])){
                     <?php
                     if($_SESSION['permission'] == 'system_manager'){
                       $sql = "SELECT *, Dormitory.name as 'dormitory_name' FROM Equipment 
-                      JOIN ROOM ON Equipment.room_number = Room.room_number 
+                      JOIN Room ON Equipment.room_number = Room.room_number 
                       JOIN Dormitory ON Dormitory.dormitory_id = Room.dormitory_id 
                       ORDER BY Dormitory.dormitory_id, Room.room_number";
                     }else if($_SESSION['permission'] == 'dormitory_supervisor'){
