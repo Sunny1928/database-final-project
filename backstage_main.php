@@ -1257,7 +1257,7 @@
                   <tbody class="datatable-body">
                     <?php
                       $sql = "SELECT *, Dormitory.name as 'dormitory_name' FROM Equipment 
-                      JOIN ROOM ON Equipment.room_number = Room.room_number 
+                      JOIN Room ON Equipment.room_number = Room.room_number 
                       JOIN Dormitory ON Dormitory.dormitory_id = Room.dormitory_id 
                       ORDER BY Dormitory.dormitory_id, Room.room_number";
                       $result = $conn->query($sql);
