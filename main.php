@@ -1197,11 +1197,7 @@ if (!isset($_SESSION["permission"])){
                         $result = $stmt->get_result();
                         $dormitory_id = mysqli_fetch_row($result)[0];
                         mysqli_stmt_close($stmt);
-
-                        $sql = "SELECT * FROM Room JOIN live_in USING(room_number) WHERE dormitory_id =  ? ORDER BY academic_year DESC, semester DESC";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("s", $dormitory_id);
-                        $sql = "SELECT * FROM Room  WHERE dormitory_id = Room.dormitory_id";
+                        $sql = "SELECT * FROM Room  WHERE dormitory_id = $dormitory_id";
                       }
                           $result = $conn->query($sql);
 
