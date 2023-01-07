@@ -746,7 +746,7 @@ if (!isset($_SESSION["permission"])){
 
         <div class="m-2 h-70" style="background-color: #eee;">
           <div class="card h-70" id="chat2">
-            <div class="card-body h-70" style="position: relative; height: 770px; overflow: scroll;">
+            <div class="card-body h-70" style="position: relative; height: 660px; overflow: scroll;">
 
               <?php
                 $sql =  "SELECT * FROM Comment";
