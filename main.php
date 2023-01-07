@@ -765,7 +765,7 @@ if (!isset($_SESSION["permission"])){
                       if ($_SESSION["permission"]=="student"){
                         echo "
                         <div class='d-flex flex-row justify-content-start'>
-                          <img src=";echo $_SESSION['icon']; echo"'alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
+                          <img src='./image/user.png' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                           <div>
                             <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7; max-width:950px;'>$content</p>
                             <p class='small ms-3 mb-2 rounded-3 text-muted'>$time[0]:$time[1]</p>
@@ -776,7 +776,7 @@ if (!isset($_SESSION["permission"])){
                       else {
                         echo "
                         <div class='d-flex flex-row justify-content-start'>
-                          <img src='";echo $_SESSION['icon']; echo"'alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
+                          <img src='./image/user.png' alt='avatar' class='rounded-circle' style='width: 45px; height: 100%;'>
                           <div>
                             <p class='small p-2 ms-3 mb-1 rounded-3' style='background-color: #f5f6f7; max-width:950px;'>$content</p>
                             <div class='small mb-2 text-muted d-flex'>
