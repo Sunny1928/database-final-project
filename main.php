@@ -901,7 +901,7 @@ if (!isset($_SESSION["permission"])){
         <div class="card m-2">
           <section class="border p-4">
             <div id="datatable-custom" data-mdb-hover="true" class="datatable datatable-hover">
-              <div class="datatable-inner table-responsive ps" style="overflow: auto; position: relative;">
+              <div class="datatable-inner table-responsive ps" style="overflow: scroll; position: relative;">
                 <table class="table datatable-table">
                   <thead class="datatable-header">
                     <tr>
@@ -943,7 +943,7 @@ if (!isset($_SESSION["permission"])){
 
                           echo "<tr>" .
                             "<td> " . $date . "</td>".
-                            "<td> " . $content . "</td>".
+                            "<td style='width:60%'> " . $content . "</td>".
                             "<td> " . $student_account . "</td>".
                             "<td> " . $point . "</td>".
                             "<td> " . $dormitory_supervisor_account . "</td>";
