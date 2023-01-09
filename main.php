@@ -912,7 +912,7 @@ if (!isset($_SESSION["permission"])){
                       <th scope="col">登記帳號</th>
                       <?php
                         if($_SESSION['permission'] == 'dormitory_supervisor'){
-                          echo "<th scope='col'>操作</th>";
+                          echo "<th scope='col' style='width:115px;'>操作</th>";
                         }
                       ?>
                     </tr>
