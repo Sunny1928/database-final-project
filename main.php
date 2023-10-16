@@ -1302,88 +1302,88 @@ if (!isset($_SESSION["permission"])){
 
                       $sql = "SELECT * FROM Equipment  WHERE room_number =  $room";
                     }
-                      $result = $conn->query($sql);
+                    $result = $conn->query($sql);
 
-                      if (mysqli_num_rows($result) > 0) 
+                    if (mysqli_num_rows($result) > 0) 
+                    {
+                      while ($userinfo = mysqli_fetch_assoc($result)) 
                       {
-                        while ($userinfo = mysqli_fetch_assoc($result)) 
-                        {
-                          $name = $userinfo['name'];
-                          $purchase_date = $userinfo['purchase_date'];
-                          $expired_year = $userinfo['expired_year'];
-                          $equipment_id = $userinfo['equipment_id'];
-                          $state = $userinfo['state'];
-                          $room_number = $userinfo['room_number'];
-                          if($_SESSION['permission'] == 'system_manager'){
-                            $dormitory_name = $userinfo['dormitory_name'];
-                          }
-                          $account = $_SESSION['account'];
-                          
-                          echo "<tr>" .
-                            "<td> " . $name . "</td>".
-                            "<td> " . $purchase_date . "</td>".
-                            "<td> " . $expired_year . "</td>".
-                            "<td> " . $state . "</td>";
-                          if($_SESSION['permission'] == 'system_manager'){
-                            echo "<td> " . $dormitory_name . "</td>";
-                          }
-                          echo "<td> " . $room_number . "</td>";
-                          
-                          if($_SESSION['permission'] == 'system_manager'){
-                            echo "
-                            <td>
-                              <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateEquipmentModal$equipment_id'><i class='fa fa-pencil'></i></button>
-                            </td>";
-                          }
-                          
-                          echo "</tr>";
-
-                          // Update Modal
-                          echo "
-                          <div class='modal fade' id='updateEquipmentModal$equipment_id' tabindex='-1' aria-labelledby='updateEquipmentModalLabel' aria-hidden='true'>
-                          <div class='modal-dialog modal-dialog-centered'>
-                          <form method='post' action='./service/equipment_update.php'>
-                          <div class='modal-content'>
-                              <div class='modal-header'>
-                                <h5 class='modal-title' id='updateEquipmentModalLabel'>修改宿舍設備</h5>
-                                <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
-                              </div>
-                              <div class='modal-body'>
-                                <div class='text-center mb-3'>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$name' readonly required type='text' name='name' id='EquipmentName' class='form-control' />
-                                    <label class='form-label' for='EquipmentName'>名稱</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                                  </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$expired_year' readonly required type='text' name='expired_year' id='Equipmentexpired_year' class='form-control' />
-                                    <label class='form-label' for='Equipmentexpired_year'>使用年限</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                                  </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$state' required type='text' name='state' id='Equipmentstate' class='form-control' />
-                                    <label class='form-label' for='Equipmentstate'>設備狀態</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                                  </div>
-                                  <div class='form-outline mb-4'>
-                                    <input value='$room_number' readonly required type='text' name='room_number' id='EquipmentNumber' class='form-control' />
-                                    <label class='form-label' for='EquipmentNumber'>房號</label>
-                                    <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
-                                  </div>
-                                  <input value='$account' hidden name='account' />
-                                  <input value='$equipment_id' hidden name='equipment_id' />
-                                </div>
-                              </div>
-                              <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
-                                <button type='submit' class='btn btn-primary'>確認</button>
-                              </div>
-                          </div>
-                          </form>
-                          </div>
-                          </div>";
+                        $name = $userinfo['name'];
+                        $purchase_date = $userinfo['purchase_date'];
+                        $expired_year = $userinfo['expired_year'];
+                        $equipment_id = $userinfo['equipment_id'];
+                        $state = $userinfo['state'];
+                        $room_number = $userinfo['room_number'];
+                        if($_SESSION['permission'] == 'system_manager'){
+                          $dormitory_name = $userinfo['dormitory_name'];
                         }
+                        $account = $_SESSION['account'];
+                        
+                        echo "<tr>" .
+                          "<td> " . $name . "</td>".
+                          "<td> " . $purchase_date . "</td>".
+                          "<td> " . $expired_year . "</td>".
+                          "<td> " . $state . "</td>";
+                        if($_SESSION['permission'] == 'system_manager'){
+                          echo "<td> " . $dormitory_name . "</td>";
+                        }
+                        echo "<td> " . $room_number . "</td>";
+                        
+                        if($_SESSION['permission'] == 'system_manager'){
+                          echo "
+                          <td>
+                            <button class='call-btn btn btn-outline-primary btn-floating btn-sm ripple-surface' data-mdb-toggle='modal' data-mdb-target='#updateEquipmentModal$equipment_id'><i class='fa fa-pencil'></i></button>
+                          </td>";
+                        }
+                        
+                        echo "</tr>";
+
+                        // Update Modal
+                        echo "
+                        <div class='modal fade' id='updateEquipmentModal$equipment_id' tabindex='-1' aria-labelledby='updateEquipmentModalLabel' aria-hidden='true'>
+                        <div class='modal-dialog modal-dialog-centered'>
+                        <form method='post' action='./service/equipment_update.php'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                              <h5 class='modal-title' id='updateEquipmentModalLabel'>修改宿舍設備</h5>
+                              <button type='button' class='btn-close' data-mdb-dismiss='modal' aria-label='Close'></button>
+                            </div>
+                            <div class='modal-body'>
+                              <div class='text-center mb-3'>
+                                <div class='form-outline mb-4'>
+                                  <input value='$name' readonly required type='text' name='name' id='EquipmentName' class='form-control' />
+                                  <label class='form-label' for='EquipmentName'>名稱</label>
+                                  <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                </div>
+                                <div class='form-outline mb-4'>
+                                  <input value='$expired_year' readonly required type='text' name='expired_year' id='Equipmentexpired_year' class='form-control' />
+                                  <label class='form-label' for='Equipmentexpired_year'>使用年限</label>
+                                  <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                </div>
+                                <div class='form-outline mb-4'>
+                                  <input value='$state' required type='text' name='state' id='Equipmentstate' class='form-control' />
+                                  <label class='form-label' for='Equipmentstate'>設備狀態</label>
+                                  <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                </div>
+                                <div class='form-outline mb-4'>
+                                  <input value='$room_number' readonly required type='text' name='room_number' id='EquipmentNumber' class='form-control' />
+                                  <label class='form-label' for='EquipmentNumber'>房號</label>
+                                  <div class='form-notch'><div class='form-notch-leading' style='width: 9px;'></div><div class='form-notch-middle' style='width: 114.4px;'></div><div class='form-notch-trailing'></div></div>
+                                </div>
+                                <input value='$account' hidden name='account' />
+                                <input value='$equipment_id' hidden name='equipment_id' />
+                              </div>
+                            </div>
+                            <div class='modal-footer'>
+                              <button type='button' class='btn btn-secondary' data-mdb-dismiss='modal'>取消</button>
+                              <button type='submit' class='btn btn-primary'>確認</button>
+                            </div>
+                        </div>
+                        </form>
+                        </div>
+                        </div>";
                       }
+                    }
                     ?>
                   </tbody>
                 </table>
@@ -1396,12 +1396,8 @@ if (!isset($_SESSION["permission"])){
               </div>
               <div class="datatable-pagination d-flex justify-content-end">
                 <div class="datatable-pagination-buttons">
-                  <button data-mdb-ripple-color="dark"
-                    class="btn btn-link datatable-pagination-button datatable-pagination-left"><i
-                      class="fa fa-chevron-left"></i></button>
-                  <button data-mdb-ripple-color="dark"
-                    class="btn btn-link datatable-pagination-button datatable-pagination-right"><i
-                      class="fa fa-chevron-right"></i></button>
+                  <button data-mdb-ripple-color="dark" class="btn btn-link datatable-pagination-button datatable-pagination-left"><i class="fa fa-chevron-left"></i></button>
+                  <button data-mdb-ripple-color="dark" class="btn btn-link datatable-pagination-button datatable-pagination-right"><i class="fa fa-chevron-right"></i></button>
                 </div>
               </div>
             </div>
@@ -1415,192 +1411,191 @@ if (!isset($_SESSION["permission"])){
   </main>
 
   <script>
-  document.querySelectorAll('.form-outline').forEach((formOutline) => {
-    new mdb.Input(formOutline).init();
-  });
+    document.querySelectorAll('.form-outline').forEach((formOutline) => {
+      new mdb.Input(formOutline).init();
+    });
 
-  if (location.hash === "#pills-news") {
-    const triggerEl = document.querySelector('a[href="#pills-news"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    if (location.hash === "#pills-news") {
+      const triggerEl = document.querySelector('a[href="#pills-news"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-message") {
-    const triggerEl = document.querySelector('a[href="#pills-message"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-message") {
+      const triggerEl = document.querySelector('a[href="#pills-message"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-violate-record") {
-    const triggerEl = document.querySelector('a[href="#pills-violate-record"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-violate-record") {
+      const triggerEl = document.querySelector('a[href="#pills-violate-record"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
-    }
-  } else if (location.hash === "#pills-all") {
-    const triggerEl = document.querySelector('a[href="#pills-all"]');
-    if (triggerEl) {
-      let instance = mdb.Tab.getInstance(triggerEl)
-      if (!instance) {
-        instance = new mdb.Tab(triggerEl);
+    } else if (location.hash === "#pills-all") {
+      const triggerEl = document.querySelector('a[href="#pills-all"]');
+      if (triggerEl) {
+        let instance = mdb.Tab.getInstance(triggerEl)
+        if (!instance) {
+          instance = new mdb.Tab(triggerEl);
+        }
+        instance.show();
       }
-      instance.show();
     }
-  }
-</script>
+  </script>
 
-
-<style>
-  body {
-    background-color: #fbfbfb;
-  }
-
-  @media (min-width: 800px) {
-    main {
-      padding-left: 280px;
+  <style>
+    body {
+      background-color: #fbfbfb;
     }
-  }
 
-  /* Sidebar */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding: 58px 0 0;
-    /* Height of navbar */
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-    width: 280px;
-    z-index: 600;
-  }
+    @media (min-width: 800px) {
+      main {
+        padding-left: 280px;
+      }
+    }
 
-  @media (max-width: 800px) {
+    /* Sidebar */
     .sidebar {
-      width: 100%;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      padding: 58px 0 0;
+      /* Height of navbar */
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+      width: 280px;
+      z-index: 600;
     }
-  }
 
-  .sidebar .active {
-    border-radius: 5px;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-  }
+    @media (max-width: 800px) {
+      .sidebar {
+        width: 100%;
+      }
+    }
 
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: 0.5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-    /* Scrollable contents if viewport is shorter than content. */
-  }
+    .sidebar .active {
+      border-radius: 5px;
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    }
 
-  #chat2 .form-control {
-    border-color: transparent;
-  }
+    .sidebar-sticky {
+      position: relative;
+      top: 0;
+      height: calc(100vh - 48px);
+      padding-top: 0.5rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /* Scrollable contents if viewport is shorter than content. */
+    }
 
-  #chat2 .form-control:focus {
-    border-color: transparent;
-    box-shadow: inset 0px 0px 0px 1px transparent;
-  }
+    #chat2 .form-control {
+      border-color: transparent;
+    }
 
-  .divider:after,
-  .divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
-  }
+    #chat2 .form-control:focus {
+      border-color: transparent;
+      box-shadow: inset 0px 0px 0px 1px transparent;
+    }
+
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
 
 
-  .c-stepper__item:before {
-    --size: 3rem;
-    content: "";
-    position: relative;
-    z-index: 1;
-    flex: 0 0 var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    background-color: lightgrey;
-  }
+    .c-stepper__item:before {
+      --size: 3rem;
+      content: "";
+      position: relative;
+      z-index: 1;
+      flex: 0 0 var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background-color: lightgrey;
+    }
 
-  .c-stepper__item {
-    position: relative;
-    display: flex;
-    gap: 1rem;
-    padding-bottom: 1rem;
-  }
+    .c-stepper__item {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
 
-  .c-stepper__item_a:before {
-    --size: 3rem;
-    content: "";
-    position: relative;
-    z-index: 1;
-    flex: 0 0 var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    background-color: #3B71CA;
-  }
+    .c-stepper__item_a:before {
+      --size: 3rem;
+      content: "";
+      position: relative;
+      z-index: 1;
+      flex: 0 0 var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background-color: #3B71CA;
+    }
 
-  .c-stepper__item_a {
-    position: relative;
-    display: flex;
-    gap: 1rem;
-    padding-bottom: 1rem;
-  }
+    .c-stepper__item_a {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
 
-  dl,
-  ol,
-  ul {
-    margin-top: 0;
-    margin-bottom: 0rem;
-    margin-top: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+    dl,
+    ol,
+    ul {
+      margin-top: 0;
+      margin-bottom: 0rem;
+      margin-top: 2rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
 
-  .c-stepper {
-    --size: 3rem;
-    --spacing: 0.5rem;
-  }
+    .c-stepper {
+      --size: 3rem;
+      --spacing: 0.5rem;
+    }
 
-  .c-stepper__item:not(:last-child):after {
-    top: calc(var(--size) + var(--spacing));
-    transform: translateX(calc(var(--size) / 2));
-    bottom: var(--spacing);
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    transform: translateX(1.5rem);
-    width: 2px;
-    background-color: #e0e0e0;
-  }
+    .c-stepper__item:not(:last-child):after {
+      top: calc(var(--size) + var(--spacing));
+      transform: translateX(calc(var(--size) / 2));
+      bottom: var(--spacing);
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      transform: translateX(1.5rem);
+      width: 2px;
+      background-color: #e0e0e0;
+    }
 
-  .c-stepper__item_a:not(:last-child):after {
-    top: calc(var(--size) + var(--spacing));
-    transform: translateX(calc(var(--size) / 2));
-    bottom: var(--spacing);
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    transform: translateX(1.5rem);
-    width: 2px;
-    background-color: #e0e0e0;
-  }
-</style>
+    .c-stepper__item_a:not(:last-child):after {
+      top: calc(var(--size) + var(--spacing));
+      transform: translateX(calc(var(--size) / 2));
+      bottom: var(--spacing);
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      transform: translateX(1.5rem);
+      width: 2px;
+      background-color: #e0e0e0;
+    }
+  </style>
 </body>
 
 </html>

@@ -1,1 +1,3 @@
-# database_final_project
+# database-final-project
+
+tools: php, html, css, javascript, MySQL
